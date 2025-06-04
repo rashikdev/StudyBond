@@ -1,13 +1,62 @@
-import React from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
 import lottie1 from "../assets/lottie1.json";
 import Lottie from "lottie-react";
 import SocialLoginBtn from "../components/SocialLoginBtn";
+import { TbEye, TbEyeClosed } from "react-icons/tb";
+import { AuthContext } from "../context/AuthProvider";
+import toast from "react-hot-toast";
 const Register = () => {
+  const [show, setShow] = useState(false);
+
+  const { createUser, updateUser, user, setUser } = use(AuthContext);
+
+  console.log(user);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo_Url = form.photoUrl.value;
+    console.log(name, email, password);
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least one uppercase letter");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      toast.error("Password must contain at least one lowercase letter");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        updateUser({
+          displayName: name,
+          photoURL: photo_Url,
+        })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo_Url });
+            toast.success("Register Successfully");
+            // navigate("/");
+          })
+          .catch((error) => {
+            // console.log(error);
+          });
+      })
+      .catch((error) => {
+        toast.error("This email already exists");
+      });
+  };
   return (
     <div className="min-h-[calc(100vh-250px)] flex flex-col lg:flex-row items-center justify-center ">
       <div className="flex items-center justify-center w-[30%]">
-        <form className="relative bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/30 shadow-xl flex flex-col items-center space-y-4 text-white w-full">
+        <form
+          onSubmit={handleRegister}
+          className="relative bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/30 shadow-xl flex flex-col items-center space-y-4 text-white w-full"
+        >
           {/* <h2 className="text-2xl font-semibold">Register Please</h2> */}
           <input
             type="text"
@@ -30,13 +79,22 @@ const Register = () => {
             required
             className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-            className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
-          />
+          <div className="relative w-full">
+            <input
+              type={show ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              required
+              className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
+            />
+            <button
+              type="button"
+              onClick={() => setShow(!show)}
+              className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer"
+            >
+              {show ? <TbEyeClosed size={23} /> : <TbEye size={23} />}
+            </button>
+          </div>
           <input
             type="submit"
             value="Register"

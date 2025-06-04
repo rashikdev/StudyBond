@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Left - Brand Info */}
         <div>
-          <h2 className="text-2xl font-bold mb-2">StudyBond</h2>
+          <h2 className="text-2xl font-bold mb-2 uppercase">Study Bond</h2>
           <p className="text-sm">
             Connect, collaborate, and grow together. A platform for group study,
             assignments, and peer feedback.
