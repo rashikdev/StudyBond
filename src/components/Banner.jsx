@@ -38,15 +38,15 @@ const Banner = () => {
         animationData={animationBg}
         loop={true}
         autoPlay={true}
-        className="h-[90vh] "
+        className="h-[92vh] "
       />
-      <div className="h-[90vh] w-full absolute top-0 left-0 bg-transparent">
+      <div className="h-[92vh] w-full absolute top-0 left-0 bg-transparent">
         <div>
           <div className="absolute top-40 left-10 hidden md:flex">
             <motion.ul
               variants={containerVariants}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
               className="flex flex-col gap-4"
             >
               <motion.a
@@ -98,7 +98,7 @@ const Banner = () => {
           <motion.ul
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
             className="flex gap-3"
           >
             <motion.a
@@ -138,10 +138,10 @@ const Banner = () => {
             </motion.a>
           </motion.ul>
         </div>
-        <div className="absolute bottom-30 left-10 space-y-10">
+        <div className="absolute bottom-34 left-10 space-y-10">
           <motion.h1
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 2, delay: 0.2, ease: "backInOut" }}
             className="text-5xl font-bold"
           >
@@ -150,7 +150,7 @@ const Banner = () => {
           <motion.p
             className="text-lg text-center md:text-left"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
             Join{" "}
@@ -163,7 +163,7 @@ const Banner = () => {
           <motion.button
             className="border px-6 py-2 rounded-full transition-all duration-200 cursor-pointer bg-white/20 backdrop-blur-[2px]"
             initial={{ opacity: 0, scale: 0.5, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.5, ease: "backOut", delay: 0.4 }}
             whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
             whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
