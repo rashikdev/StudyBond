@@ -1,48 +1,67 @@
 import React from "react";
 import { Link } from "react-router";
-
+import lottie1 from "../assets/lottie1.json";
+import Lottie from "lottie-react";
+import SocialLoginBtn from "../components/SocialLoginBtn";
 const Register = () => {
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center">
-      <div className="flex items-center justify-center">
-        <form className="relative bg-white/30 backdrop-blur-md p-8 rounded-2xl border border-white/30 shadow-xl flex flex-col items-center space-y-4 text-white">
-          <h2 className="text-2xl font-semibold">Register</h2>
+    <div className="min-h-[calc(100vh-250px)] flex flex-col lg:flex-row items-center justify-center ">
+      <div className="flex items-center justify-center w-[30%]">
+        <form className="relative bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/30 shadow-xl flex flex-col items-center space-y-4 text-white w-full">
+          {/* <h2 className="text-2xl font-semibold">Register Please</h2> */}
           <input
             type="text"
             placeholder="Name"
+            name="name"
             required
             className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
           />
           <input
             type="email"
+            name="email"
             placeholder="Email"
             required
             className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
           />
           <input
+            type="url"
+            name="photoUrl"
+            placeholder="Photo URL"
+            required
+            className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
+          />
+          <input
             type="password"
+            name="password"
             placeholder="Password"
             required
             className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
           />
           <input
             type="submit"
-            value="Sign Up"
-            className="cursor-pointer bg-white/40 font-bold px-6 py-2 rounded-full transition hover:scale-95"
+            value="Register"
+            className="cursor-pointer w-full bg-white/10 font-bold px-6 py-2 rounded-full hover:bg-black/20 transition-all"
           />
 
           <h5 className="text-sm">
             Already have an account?{" "}
             <Link
               to="/login"
-              className="bg-white/20 text-white text-xs font-semibold px-2 py-1 rounded ml-1 hover:underline"
+              className="text-blue-500 text-xs font-semibold rounded ml-1 hover:underline"
             >
-              Sign In
+              Login
             </Link>
           </h5>
+          <div className="flex items-center w-full">
+            <hr className="w-full dark:text-gray-600" />
+            <p className="px-3 dark:text-gray-600">OR</p>
+            <hr className="w-full dark:text-gray-600" />
+          </div>
+          <SocialLoginBtn title="Continue with Google"></SocialLoginBtn>
         </form>
       </div>
-      <div className="border">lottifiles</div>
+      {/* <div className="">
+      </div> */}
     </div>
   );
 };

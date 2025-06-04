@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ThemeToggleBtn from "./ThemeToggleBtn";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 // import userlogo from "../assets/user.png";
 import Hamburger from "hamburger-react";
 const Navbar = () => {
@@ -35,7 +35,11 @@ const Navbar = () => {
             alt="logo"
             className="w-10 rounded-full border-3 border-green-500"
           /> */}
-          <button className="border-2 rounded-full px-4 py-1 cursor-pointer">Login</button>
+          <Link to="/login">
+            <button className="border-2 rounded-full px-4 py-1 cursor-pointer">
+              Login
+            </button>
+          </Link>
         </div>
       </div>
     </div>
