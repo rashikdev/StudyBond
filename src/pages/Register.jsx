@@ -1,7 +1,5 @@
 import React, { use, useState } from "react";
 import { Link } from "react-router";
-import lottie1 from "../assets/lottie1.json";
-import Lottie from "lottie-react";
 import SocialLoginBtn from "../components/SocialLoginBtn";
 import { TbEye, TbEyeClosed } from "react-icons/tb";
 import { AuthContext } from "../context/AuthProvider";

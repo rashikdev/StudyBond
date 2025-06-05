@@ -22,9 +22,11 @@ const Navbar = () => {
         toast.error("Logout Failed");
       });
   };
+
+  // const theme = document.documentElement.getAttribute("data-theme") === "black";
   return (
     <div className="fixed top-0 left-0 w-full z-50">
-      <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 border rounded-full md:mt-10 mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
+      <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full md:mt-10 mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
         <button onClick={handleMenu} className="md:hidden">
           <Hamburger size={26}></Hamburger>
         </button>
@@ -66,7 +68,9 @@ const Navbar = () => {
             </ul>
           </div>
         )}
-        <h1 className="md:text-2xl font-semibold uppercase">Study Bond</h1>
+        <Link to="/">
+          <h1 className={`md:text-2xl font-semibold uppercase`}>Study Bond</h1>
+        </Link>
         <div>
           <ul className="gap-6 hidden md:flex items-center">
             <NavLink
@@ -85,7 +89,7 @@ const Navbar = () => {
             >
               Assignments
             </NavLink>
-            {
+            {user && (
               <>
                 <NavLink
                   to="/pending-assignments"
@@ -96,7 +100,7 @@ const Navbar = () => {
                   Pending Assignments
                 </NavLink>
               </>
-            }
+            )}
           </ul>
         </div>
         <div className="absolute hidden lg:block right-70 border-r-2 border-l-2 rounded-full px-4 py-1 hover:scale-105 cursor-pointer transition-all duration-300">
