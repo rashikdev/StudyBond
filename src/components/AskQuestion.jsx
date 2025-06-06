@@ -6,20 +6,11 @@ const AskQuestion = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (question.length < 10) {
-      toast.error("Your question must be at least 10 characters.");
-      return;
-    }
-
     setSubmitting(true);
-
-    // Simulate API request
     setTimeout(() => {
+      e.target.reset();
       toast.success("Question submitted successfully!");
       setSubmitting(false);
-      setQuestion("");
-      setEmail("");
     }, 1000);
   };
 

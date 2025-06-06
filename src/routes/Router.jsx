@@ -25,6 +25,9 @@ export const Router = createBrowserRouter([
       {
         path: "/assignments",
         Component: Assignments,
+        loader: () =>
+          fetch("http://localhost:5000/assignments").then((res) => res.json()),
+        hydrateFallbackElement: <div>Loading...</div>,
       },
     ],
   },

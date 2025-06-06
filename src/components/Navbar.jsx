@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 left-0 w-full z-50">
       <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full md:mt-10 mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
-        <button onClick={handleMenu} className="md:hidden">
+        <button onClick={handleMenu}className="md:hidden">
           <Hamburger size={26}></Hamburger>
         </button>
         {isOpen && (

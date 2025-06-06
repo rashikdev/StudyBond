@@ -19,7 +19,7 @@ export default function App() {
           className=" border rounded-2xl"
         >
           <div className="collapse collapse-arrow ">
-            <input type="radio" name="my-accordion-2" />
+            <input defaultChecked  type="radio" name="my-accordion-2" />
             <div className="collapse-title font-semibold">
               Who can create assignments?
             </div>
