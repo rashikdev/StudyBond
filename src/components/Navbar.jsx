@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import userLogo from "../assets/user.png";
 import Hamburger from "hamburger-react";
@@ -23,11 +23,20 @@ const Navbar = () => {
       });
   };
 
+  // useEffect(() => {
+  //   if (show) {
+  //     const timeout = setTimeout(() => {
+  //       setShow(false);
+  //     }, 4000);
+  //     return () => clearTimeout(timeout);
+  //   }
+  // }, [show]);
+
   // const theme = document.documentElement.getAttribute("data-theme") === "black";
   return (
     <div className="fixed top-0 left-0 w-full z-50">
       <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full md:mt-10 mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
-        <button onClick={handleMenu}className="md:hidden">
+        <button onClick={handleMenu} className="md:hidden">
           <Hamburger size={26}></Hamburger>
         </button>
         {isOpen && (
@@ -109,13 +118,17 @@ const Navbar = () => {
         <div>
           <div className="flex items-center gap-5">
             {user && (
-              <img
-                onClick={() => setShow(!show)}
-                title={user.displayName}
-                className="w-10 h-10 rounded-full border-2 cursor-pointer"
-                src={user?.photoURL ? user.photoURL : userLogo}
-                alt={user.displayName}
-              />
+              <div
+                className="tooltip tooltip-left"
+                data-tip={user.displayName}
+              >
+                <img
+                  onClick={() => setShow(!show)}
+                  className="w-10 h-10 rounded-full border-2 cursor-pointer"
+                  src={user?.photoURL ? user.photoURL : userLogo}
+                  alt={user.displayName}
+                />
+              </div>
             )}
             <div>
               {user ? (

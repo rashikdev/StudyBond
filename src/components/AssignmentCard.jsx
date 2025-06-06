@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { RiTimelineView } from "react-icons/ri";
 import { RxUpdate } from "react-icons/rx";
 import { motion } from "motion/react";
+import { Link } from "react-router";
 
 const AssignmentCard = ({ assignment }) => {
-  const { thumbnail, title, marks, difficulty } = assignment;
-
+  const { thumbnail, title, marks, difficulty, _id } = assignment;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const getBadgeColor = () => {
     if (difficulty === "Easy") return "bg-green-200 text-green-800";
     if (difficulty === "Medium") return "bg-yellow-200 text-yellow-800";
@@ -50,16 +53,18 @@ const AssignmentCard = ({ assignment }) => {
           >
             <RxUpdate size={25} color="yellow" />
           </button>
-          <button
-            data-tip="View"
-            className="tooltip tooltip-info cursor-pointer"
-          >
-            <RiTimelineView
-              size={27}
-              color="LightBlue"
-              className="rounded-2xl"
-            />
-          </button>
+          <Link to={`/assignment/${_id}`}>
+            <button
+              data-tip="View"
+              className="tooltip tooltip-info cursor-pointer"
+            >
+              <RiTimelineView
+                size={27}
+                color="LightBlue"
+                className="rounded-2xl"
+              />
+            </button>
+          </Link>
         </div>
       </div>
     </motion.div>

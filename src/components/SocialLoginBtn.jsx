@@ -1,11 +1,15 @@
 import React, { use } from "react";
 import { TbBrandGoogle } from "react-icons/tb";
 import { AuthContext } from "../context/AuthProvider";
+import { useLocation, useNavigate } from "react-router";
 
 const SocialLoginBtn = ({ title }) => {
   const { signInWithGoogle } = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleGoogleLogin = () => {
     signInWithGoogle();
+    navigate(location.state || "/");
   };
   return (
     <button

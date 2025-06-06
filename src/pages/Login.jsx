@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLoginBtn from "../components/SocialLoginBtn";
 import { TbEye, TbEyeClosed } from "react-icons/tb";
 import { AuthContext } from "../context/AuthProvider";
@@ -7,7 +7,8 @@ import toast from "react-hot-toast";
 const Login = () => {
   const { loginUser } = use(AuthContext);
   const [show, setShow] = useState(false);
-
+  const location = useLocation();
+  const Navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,9 +17,10 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         toast.success("Login Successfully");
+        Navigate(location.state || "/");
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error("Invalid email or password");
       });
   };
 

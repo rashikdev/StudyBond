@@ -1,12 +1,13 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLoginBtn from "../components/SocialLoginBtn";
 import { TbEye, TbEyeClosed } from "react-icons/tb";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
 const Register = () => {
   const [show, setShow] = useState(false);
-
+  const location = useLocation();
+  const Navigate = useNavigate();
   const { createUser, updateUser, user, setUser } = use(AuthContext);
 
   console.log(user);
@@ -38,7 +39,7 @@ const Register = () => {
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo_Url });
             toast.success("Register Successfully");
-            // navigate("/");
+            Navigate(location.state || "/");
           })
           .catch((error) => {
             // console.log(error);
