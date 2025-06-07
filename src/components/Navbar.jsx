@@ -5,6 +5,7 @@ import Hamburger from "hamburger-react";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
 import ThemeToggleBtn from "./ThemeToggleBtn";
+import { motion } from "motion/react";
 const Navbar = () => {
   const { user, logoutUser } = use(AuthContext);
   const [isOpen, setOpen] = useState(false);
@@ -122,10 +123,7 @@ const Navbar = () => {
         <div>
           <div className="flex items-center gap-5">
             {user && (
-              <div
-                className="tooltip tooltip-left"
-                data-tip={user.displayName}
-              >
+              <div className="tooltip tooltip-left" data-tip={user.displayName}>
                 <img
                   onClick={() => setShow(!show)}
                   className="w-10 h-10 rounded-full border-2 cursor-pointer"
@@ -155,16 +153,35 @@ const Navbar = () => {
           </div>
         </div>
         {show && (
-          <div className="absolute top-20 right-5 bg-white/20 p-2 rounded">
-            <ul className="flex flex-col gap-1">
-              <Link onClick={() => setShow(false)}>
-                <li>Create Assignment</li>
+          <motion.div
+            initial={{ opacity: 0, scale: 0, y: -200 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute right-0 top-20 px-4 py-8 bg-white/70 backdrop-blur-md rounded-lg text-black"
+          >
+            <ul className="flex flex-col gap-3 font-semibold overflow-hidden">
+              <Link to="/create-assignment" onClick={() => setShow(false)}>
+                <motion.li
+                  initial={{ opacity: 0, scale: 0, x: -200 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{ duration: 0.9, delay: 0.1 }}
+                  className="cursor-pointer hover:bg-gray-400 rounded-md px-2"
+                >
+                  Create Assignment
+                </motion.li>
               </Link>
               <Link onClick={() => setShow(false)}>
-                <li>My Attempted Assignments</li>
+                <motion.li
+                  initial={{ opacity: 0, x: -200 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.9, delay: 0.5 }}
+                  className="cursor-pointer hover:bg-gray-400 rounded-md px-2"
+                >
+                  My Submitted Assignments
+                </motion.li>
               </Link>
             </ul>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>

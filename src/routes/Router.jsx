@@ -7,6 +7,7 @@ import Assignments from "../pages/Assignments";
 import PrivateRoute from "./PrivateRoute";
 import AssignmentDetails from "../pages/AssignmentDetails";
 import axiosSecure from "../utils/axiosSecure";
+import CreateAssignment from "../pages/CreateAssignment";
 
 export const Router = createBrowserRouter([
   {
@@ -42,6 +43,14 @@ export const Router = createBrowserRouter([
         loader: ({ params }) =>
           axiosSecure.get(`/assignments/${params.id}`).then((res) => res.data),
         hydrateFallbackElement: <div>Loading...</div>,
+      },
+      {
+        path: "/create-assignment",
+        element: (
+          <PrivateRoute>
+            <CreateAssignment></CreateAssignment>
+          </PrivateRoute>
+        ),
       },
     ],
   },
