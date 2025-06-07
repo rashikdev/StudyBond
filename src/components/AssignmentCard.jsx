@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { RiTimelineView } from "react-icons/ri";
 import { RxUpdate } from "react-icons/rx";
 import { motion } from "motion/react";
 import { Link } from "react-router";
-
-const AssignmentCard = ({ assignment }) => {
+const AssignmentCard = ({ assignment, handleDelete }) => {
   const { thumbnail, title, marks, difficulty, _id } = assignment;
-  
+
   const getBadgeColor = () => {
     if (difficulty === "Easy") return "bg-green-200 text-green-800";
     if (difficulty === "Medium") return "bg-yellow-200 text-yellow-800";
@@ -40,6 +39,7 @@ const AssignmentCard = ({ assignment }) => {
         </p>
         <div className="flex items-center justify-end gap-10">
           <button
+            onClick={() => handleDelete(_id, assignment)}
             data-tip="Delete"
             className="tooltip tooltip-error cursor-pointer"
           >

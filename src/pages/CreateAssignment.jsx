@@ -4,10 +4,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../context/AuthProvider";
 import axiosSecure from "../utils/axiosSecure";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const CreateAssignment = () => {
   const { user } = use(AuthContext);
   const [dueDate, setDueDate] = useState(null);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -24,6 +26,7 @@ const CreateAssignment = () => {
         toast.success("Assignment created successfully");
         form.reset();
         setDueDate(null);
+        navigate("/assignments");
       })
       .catch((error) => {
         console.log(error);
