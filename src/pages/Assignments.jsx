@@ -34,7 +34,7 @@ const Assignments = () => {
         />
       </div>
       <div className="flex justify-end items-center gap-2 mb-8"><h4 className="font-semibold text-xl">Filter :</h4>
-          <select name="difficulty" className="border-1 border-gray-500 p-1 rounded-2xl bg-black">
+          <select name="difficulty" className="border-1 border-gray-500 p-1 rounded-2xl bg-black text-white">
             <option value="All">All</option>
             <option value="Easy">Easy</option>
             <option value="Medium">Medium</option>

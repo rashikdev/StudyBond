@@ -8,6 +8,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
+import { Link } from "react-router";
 
 const Banner = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -69,7 +70,7 @@ const Banner = () => {
         muted
         playsInline
         onLoadedData={() => setVideoLoaded(true)}
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        className="absolute top-22 left-0 w-full h-full object-cover z-0"
       />
 
       {/* Content Overlay */}
@@ -156,17 +157,19 @@ const Banner = () => {
             – a collaborative platform <br className="hidden md:block" />
             where friends share, submit, and grade assignments together.
           </motion.p>
-          <motion.button
-            className="border px-6 py-2 rounded-full transition-all duration-200 cursor-pointer bg-white/20 backdrop-blur-[2px]"
-            initial={{ opacity: 0, scale: 0.5, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1.5, ease: "backOut", delay: 0.4 }}
-            whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
-            whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-            viewport={{ once: true }}
-          >
-            Get Started
-          </motion.button>
+          <Link to="/assignments">
+            <motion.button
+              className="border px-6 py-2 rounded-full transition-all duration-200 cursor-pointer bg-white/20 backdrop-blur-[2px]"
+              initial={{ opacity: 0, scale: 0.5, x: 30 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 1.5, ease: "backOut", delay: 0.4 }}
+              whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
+              whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+              viewport={{ once: true }}
+            >
+              Get Started
+            </motion.button>
+          </Link>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import userLogo from "../assets/user.png";
 import Hamburger from "hamburger-react";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
+import ThemeToggleBtn from "./ThemeToggleBtn";
 const Navbar = () => {
   const { user, logoutUser } = use(AuthContext);
   const [isOpen, setOpen] = useState(false);
@@ -34,8 +35,8 @@ const Navbar = () => {
 
   // const theme = document.documentElement.getAttribute("data-theme") === "black";
   return (
-    <div className="fixed top-0 left-0 w-full z-50">
-      <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full md:mt-10 mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
+    <div className="fixed top-0 left-0 w-full z-[999]">
+      <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
         <button onClick={handleMenu} className="md:hidden">
           <Hamburger size={26}></Hamburger>
         </button>
@@ -112,8 +113,11 @@ const Navbar = () => {
             )}
           </ul>
         </div>
+        <div className="absolute hidden lg:block lg:right-108">
+          <ThemeToggleBtn></ThemeToggleBtn>
+        </div>
         <div className="absolute hidden lg:block right-70 border-r-2 border-l-2 rounded-full px-4 py-1 hover:scale-105 cursor-pointer transition-all duration-300">
-          <NavLink>Dasheboard</NavLink>
+          <NavLink>Dashboard</NavLink>
         </div>
         <div>
           <div className="flex items-center gap-5">

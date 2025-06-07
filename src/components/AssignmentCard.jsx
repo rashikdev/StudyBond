@@ -7,9 +7,7 @@ import { Link } from "react-router";
 
 const AssignmentCard = ({ assignment }) => {
   const { thumbnail, title, marks, difficulty, _id } = assignment;
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  
   const getBadgeColor = () => {
     if (difficulty === "Easy") return "bg-green-200 text-green-800";
     if (difficulty === "Medium") return "bg-yellow-200 text-yellow-800";
