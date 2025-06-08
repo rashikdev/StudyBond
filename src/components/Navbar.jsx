@@ -1,19 +1,15 @@
 import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import userLogo from "../assets/user.png";
-import Hamburger from "hamburger-react";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
 import ThemeToggleBtn from "./ThemeToggleBtn";
 import { motion } from "motion/react";
+import Hamburger from "hamburger-react";
 const Navbar = () => {
   const { user, logoutUser } = use(AuthContext);
   const [isOpen, setOpen] = useState(false);
   const [show, setShow] = useState(false);
-
-  const handleMenu = () => {
-    setOpen(!isOpen);
-  };
 
   const handleLogout = () => {
     logoutUser()
@@ -25,59 +21,106 @@ const Navbar = () => {
       });
   };
 
-  // useEffect(() => {
-  //   if (show) {
-  //     const timeout = setTimeout(() => {
-  //       setShow(false);
-  //     }, 4000);
-  //     return () => clearTimeout(timeout);
-  //   }
-  // }, [show]);
+  useEffect(() => {
+    if (show) {
+      const timeout = setTimeout(() => {
+        setShow(false);
+      }, 4000);
+      return () => clearTimeout(timeout);
+    }
+  }, [show]);
 
   // const theme = document.documentElement.getAttribute("data-theme") === "black";
   return (
     <div className="fixed top-0 left-0 w-full z-[999]">
       <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
-        <button onClick={handleMenu} className="md:hidden">
-          <Hamburger size={26}></Hamburger>
+        <button
+          onClick={() => {
+            setOpen(!isOpen);
+          }}
+          className="md:hidden"
+        >
+          <Hamburger toggled={isOpen} toggle={setOpen} size={26}></Hamburger>
         </button>
         {isOpen && (
-          <div className="w-30 h-[30vh] bg-white/10 backdrop-blur-lg absolute left-0 top-20">
-            <ul className="flex flex-col gap-1 p-3 text-[10px]">
+          <motion.div
+            initial={{ x: "-100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="w-50 py-3 rounded-r-4xl bg-white backdrop-blur-lg absolute -left-2 top-20 z-50 text-black flex justify-center items-center"
+          >
+            <ul className="flex flex-col gap-5 text-[16px]">
               <NavLink
                 to="/"
+                toggle={setOpen}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) => (isActive ? "" : "")}
               >
-                Home
+                <motion.li
+                  initial={{ x: "-100%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  Home
+                </motion.li>
               </NavLink>
               <NavLink
+                toggle={setOpen}
                 to="/assignments"
                 onClick={() => setOpen(false)}
                 className={({ isActive }) => (isActive ? "" : "")}
               >
-                Assignments
+                <motion.li
+                  initial={{ x: "100%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  Assignments
+                </motion.li>
               </NavLink>
               {user && (
                 <>
                   <NavLink
+                    toggle={setOpen}
                     to="/pending-assignments"
                     onClick={() => setOpen(false)}
                     className={({ isActive }) => (isActive ? "" : "")}
                   >
-                    Pending Assignments
+                    <motion.li
+                      initial={{ x: "-100%", opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                      Pending Assignments
+                    </motion.li>
                   </NavLink>
                   <NavLink
+                    toggle={setOpen}
                     to="/dashboard"
                     onClick={() => setOpen(false)}
                     className={({ isActive }) => (isActive ? "" : "")}
                   >
-                    Dashboard
+                    <motion.li
+                      initial={{ x: "100%", opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                      Dashboard
+                    </motion.li>
                   </NavLink>
                 </>
               )}
+              <motion.li
+                initial={{ x: "-100%", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex items-center gap-2"
+              >
+                <p>Change Theme</p>
+                <ThemeToggleBtn></ThemeToggleBtn>
+              </motion.li>
             </ul>
-          </div>
+          </motion.div>
         )}
         <Link to="/">
           <h1 className={`md:text-2xl font-semibold uppercase`}>Study Bond</h1>
@@ -121,12 +164,12 @@ const Navbar = () => {
           <NavLink>Dashboard</NavLink>
         </div>
         <div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center md:gap-5 gap-4">
             {user && (
               <div className="tooltip tooltip-left" data-tip={user.displayName}>
                 <img
                   onClick={() => setShow(!show)}
-                  className="w-10 h-10 rounded-full border-2 cursor-pointer"
+                  className="md:w-10 md:h-10 w-9 h-9 rounded-full border-2 cursor-pointer"
                   src={user?.photoURL ? user.photoURL : userLogo}
                   alt={user.displayName}
                 />
@@ -137,7 +180,7 @@ const Navbar = () => {
                 <Link to="/login">
                   <button
                     onClick={handleLogout}
-                    className="border-2 text-red-500 rounded-full px-4 py-1 cursor-pointer"
+                    className="border-2 text-red-500 rounded-full text-sm md:text-[16px] px-4 py-1 cursor-pointer"
                   >
                     Logout
                   </button>
@@ -157,7 +200,7 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0, y: -200 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute right-0 top-20 px-4 py-8 bg-white/70 backdrop-blur-md rounded-lg text-black"
+            className="absolute right-0 top-20 px-4 py-8 bg-white/90 backdrop-blur-md rounded-lg text-black"
           >
             <ul className="flex flex-col gap-3 font-semibold overflow-hidden">
               <Link to="/create-assignment" onClick={() => setShow(false)}>
