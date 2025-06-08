@@ -8,6 +8,8 @@ import PrivateRoute from "./PrivateRoute";
 import AssignmentDetails from "../pages/AssignmentDetails";
 import axiosSecure from "../utils/axiosSecure";
 import CreateAssignment from "../pages/CreateAssignment";
+import Spinner from "../components/Spinner";
+import ErrorPage from "../components/ErrorPage";
 
 export const Router = createBrowserRouter([
   {
@@ -31,7 +33,7 @@ export const Router = createBrowserRouter([
         Component: Assignments,
         loader: () =>
           fetch("http://localhost:5000/assignments").then((res) => res.json()),
-        hydrateFallbackElement: <div>Loading...</div>,
+        hydrateFallbackElement: <Spinner></Spinner>,
       },
       {
         path: "/assignment/:id",
@@ -42,7 +44,7 @@ export const Router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           axiosSecure.get(`/assignments/${params.id}`).then((res) => res.data),
-        hydrateFallbackElement: <div>Loading...</div>,
+        hydrateFallbackElement: <Spinner></Spinner>,
       },
       {
         path: "/create-assignment",
@@ -53,5 +55,9 @@ export const Router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    Component: ErrorPage,
   },
 ]);
