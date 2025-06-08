@@ -1,16 +1,33 @@
-import React, { use, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { RiTimelineView } from "react-icons/ri";
 import { RxUpdate } from "react-icons/rx";
 import { motion } from "motion/react";
 import { Link } from "react-router";
-const AssignmentCard = ({ assignment, handleDelete }) => {
+import { AuthContext } from "../context/AuthProvider";
+import { use } from "react";
+import toast from "react-hot-toast";
+
+const AssignmentCard = ({
+  assignment,
+  handleDelete,
+  setOpen,
+  handleGetIdAndAssignment,
+}) => {
   const { thumbnail, title, marks, difficulty, _id } = assignment;
+
+  const { user } = use(AuthContext);
 
   const getBadgeColor = () => {
     if (difficulty === "Easy") return "bg-green-200 text-green-800";
     if (difficulty === "Medium") return "bg-yellow-200 text-yellow-800";
     return "bg-red-200 text-red-800";
+  };
+
+  const handleModal = () => {
+    if (!assignment.email || assignment.email !== user?.email)
+      return toast.error("You are not authorized to update this assignment.");
+    setOpen(true);
+    handleGetIdAndAssignment(_id, assignment);
   };
 
   return (
@@ -46,6 +63,7 @@ const AssignmentCard = ({ assignment, handleDelete }) => {
             <MdDeleteForever size={30} color="red" />
           </button>
           <button
+            onClick={handleModal}
             data-tip="Update"
             className="tooltip tooltip-warning cursor-pointer"
           >

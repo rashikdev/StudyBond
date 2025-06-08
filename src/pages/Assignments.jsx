@@ -6,12 +6,19 @@ import axiosSecure from "../utils/axiosSecure";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthProvider";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Assignments = () => {
   const initialAssignments = useLoaderData();
   const [assignments, setAssignments] = useState(initialAssignments);
+  const [open, setOpen] = useState(false);
+
+  const [Id, setId] = useState(null);
+  const [specificAssignment, setSpecificAssignment] = useState(null);
 
   const { user } = use(AuthContext);
+
   const handleDelete = (id, assignment) => {
     if (!assignment.email || assignment.email !== user?.email)
       return toast.error("You are not authorized to delete this assignment.");
@@ -37,6 +44,32 @@ const Assignments = () => {
           .catch((error) => console.log(error));
       }
     });
+  };
+
+  const handleGetIdAndAssignment = (id, assignment) => {
+    setId(id);
+    setSpecificAssignment(assignment);
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    axiosSecure
+      .put(`/assignments/${Id}`, data)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          toast.success("Assignment updated successfully");
+          setAssignments((prev) =>
+            prev.map((a) => (a._id === Id ? specificAssignment : a))
+          );
+          setOpen(false);
+        }
+      })
+      .catch((error) => {
+        toast.error("Failed to update assignment");
+      });
   };
 
   return (
@@ -70,7 +103,7 @@ const Assignments = () => {
         <h4 className="font-semibold text-xl">Filter :</h4>
         <select
           name="difficulty"
-          className="border-1 border-gray-500 p-1 rounded-2xl bg-black text-white"
+          className="border-1 border-gray-500 p-1 rounded-2xl bg-base-100"
         >
           <option value="All">All</option>
           <option value="Easy">Easy</option>
@@ -84,9 +117,176 @@ const Assignments = () => {
             key={assignment._id}
             assignment={assignment}
             handleDelete={handleDelete}
+            setOpen={setOpen}
+            handleGetIdAndAssignment={handleGetIdAndAssignment}
           ></AssignmentCard>
         ))}
       </div>
+
+      {open && specificAssignment && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="fixed h-[100vh] w-[100vw] top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-black/20 backdrop-blur-md">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700 w-[90vw] h-[60vh] md:w-[55vw] rounded-2xl flex flex-col items-center justify-center gap-4">
+            <div className="">
+              <form onSubmit={handleUpdate} className="space-y-4">
+                <div className="flex flex-col gap-2 md:flex-row md:space-x-4">
+                  <div className="flex-1">
+                    <label className="w-full font-medium mb-1">Title</label>
+                    <input
+                      type="text"
+                      name="title"
+                      value={specificAssignment.title}
+                      onChange={(e) =>
+                        setSpecificAssignment((prev) => ({
+                          ...prev,
+                          title: e.target.value,
+                        }))
+                      }
+                      className="w-full border rounded-lg px-4 py-4 my-3"
+                      placeholder="Enter assignment title"
+                      required
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label className="w-full font-medium mb-1">
+                      Description
+                    </label>
+                    <textarea
+                      name="description"
+                      value={specificAssignment.description}
+                      onChange={(e) =>
+                        setSpecificAssignment((prev) => ({
+                          ...prev,
+                          description: e.target.value,
+                        }))
+                      }
+                      className="w-full border rounded-lg px-4 py-2 h-20 md:h-[56px] my-3"
+                      placeholder="Enter assignment description"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 md:flex-row md:space-x-4">
+                  <div className="flex-1">
+                    <label className="w-full font-medium mb-1">Marks</label>
+                    <input
+                      type="number"
+                      name="marks"
+                      value={specificAssignment.marks}
+                      onChange={(e) =>
+                        setSpecificAssignment((prev) => ({
+                          ...prev,
+                          marks: e.target.value,
+                        }))
+                      }
+                      className="w-full border rounded-lg px-4 py-4 my-3"
+                      placeholder="Enter total marks"
+                      required
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <label className="w-full font-medium mb-1">
+                      Thumbnail Image URL
+                    </label>
+                    <input
+                      type="url"
+                      name="thumbnail"
+                      value={specificAssignment.thumbnail}
+                      onChange={(e) =>
+                        setSpecificAssignment((prev) => ({
+                          ...prev,
+                          thumbnail: e.target.value,
+                        }))
+                      }
+                      className="w-full border rounded-lg px-4 py-4 my-3"
+                      placeholder="https://example.com/image.jpg"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2 md:flex-row md:space-x-4">
+                  <div className="flex-1">
+                    <label className="w-full font-medium mb-1">
+                      Difficulty Level
+                    </label>
+                    <select
+                      name="difficulty"
+                      value={specificAssignment.difficulty || ""}
+                      onChange={(e) =>
+                        setSpecificAssignment((prev) => ({
+                          ...prev,
+                          difficulty: e.target.value,
+                        }))
+                      }
+                      className="w-full border rounded-lg px-4 py-4 my-3"
+                      required
+                    >
+                      <option className="text-black" value="easy">
+                        Easy
+                      </option>
+                      <option className="text-black" value="medium">
+                        Medium
+                      </option>
+                      <option className="text-black" value="hard">
+                        Hard
+                      </option>
+                    </select>
+                  </div>
+                  <div className="flex-1">
+                    <label className="w-full font-medium mb-1">Due Date</label>
+                    <div className="w-full my-3">
+                      <DatePicker
+                        dateFormat="dd-MM-yyyy"
+                        name="dueDate"
+                        selected={
+                          specificAssignment?.dueDate &&
+                          !isNaN(new Date(specificAssignment.dueDate))
+                            ? new Date(specificAssignment.dueDate)
+                            : null
+                        }
+                        onChange={(date) =>
+                          setSpecificAssignment((prev) => ({
+                            ...prev,
+                            dueDate: date,
+                          }))
+                        }
+                        placeholderText="Select due date"
+                        className="w-full border rounded-lg px-4 py-4"
+                        wrapperClassName="w-full"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-5 justify-end py-3">
+                  <button
+                    onClick={() => setOpen(false)}
+                    type="button"
+                    className="bg-red-600 text-white rounded-md hover:bg-red-400 transition px-4 py-2 cursor-pointer font-bold"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="bg-green-600 text-white rounded-md hover:bg-green-700 transition px-4 py-2 cursor-pointer font-bold"
+                  >
+                    Update Assignment
+                  </button>
+                </div>
+              </form>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };
