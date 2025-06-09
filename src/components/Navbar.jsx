@@ -110,6 +110,11 @@ const Navbar = () => {
                   </NavLink>
                 </>
               )}
+              <motion.li>
+                <button>
+                  <ThemeToggleBtn></ThemeToggleBtn>
+                </button>
+              </motion.li>
             </ul>
           </motion.div>
         )}
@@ -156,9 +161,6 @@ const Navbar = () => {
         </div>
         <div>
           <div className="flex items-center md:gap-5 gap-4">
-            <div className="md:hidden">
-              <ThemeToggleBtn></ThemeToggleBtn>
-            </div>
             {user && (
               <div className="tooltip tooltip-left" data-tip={user.displayName}>
                 <img

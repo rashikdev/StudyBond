@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { motion } from "motion/react";
 import toast from "react-hot-toast";
@@ -43,8 +43,16 @@ const AssignmentDetails = () => {
       });
     navigate("/pending-assignments");
   };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10 md:mt-30 mt-16 mb-5">
+    <motion.div
+      initial={{ opacity: 0, y: 90 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="max-w-4xl mx-auto px-4 py-10 md:mt-30 mt-16 mb-5"
+    >
       <div className="bg-gray-900 shadow-lg rounded-2xl p-6">
         <img
           src={thumbnail}
@@ -129,7 +137,7 @@ const AssignmentDetails = () => {
           </motion.div>
         </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
