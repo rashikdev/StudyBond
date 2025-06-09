@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { motion } from "motion/react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthProvider";
@@ -8,6 +8,7 @@ const AssignmentDetails = () => {
   const assignment = useLoaderData();
   const { thumbnail, title, description, difficulty, marks, dueDate, _id } =
     assignment;
+  const navigate = useNavigate();
   const { user } = use(AuthContext);
   const [open, setOpen] = useState(false);
   const getBadgeColor = () => {
@@ -40,6 +41,7 @@ const AssignmentDetails = () => {
         console.log(error);
         toast.error("Failed to submit assignment");
       });
+    navigate("/pending-assignments");
   };
   return (
     <div className="max-w-4xl mx-auto px-4 py-10 md:mt-30 mt-16 mb-5">

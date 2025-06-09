@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { useLoaderData } from "react-router";
 import { motion } from "motion/react";
 import axiosSecure from "../utils/axiosSecure";
+import toast from "react-hot-toast";
+import { AuthContext } from "../context/AuthProvider";
 const PendingAssignments = () => {
   const initialAssignments = useLoaderData();
-  console.log(initialAssignments);
+  const [assignments, setAssignments] = useState(initialAssignments);
   const [open, setOpen] = useState(false);
-
+  const { user } = use(AuthContext);
   const [singleAssignment, setSingleAssignment] = useState(null);
 
   const getSingleAssignment = (id) => {
     axiosSecure.get(`/submitedassignments/${id}`).then((res) => {
-      setSingleAssignment(res.data);
+      const assignment = res.data;
+      if (user?.email === assignment?.email) {
+        return toast.error("You cannot mark your own assignment");
+      }
+      setSingleAssignment(assignment);
+      setOpen(true);
     });
-    setOpen(true);
+  };
+
+  const handleUpdate = (e, id) => {
+    e.preventDefault();
+    axiosSecure
+      .patch(`/submitedassignment/${id}`)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          toast.success("Assignment marked successfully");
+          setAssignments((prev) => prev.filter((item) => item._id !== id));
+          setOpen(false);
+        }
+      })
+      .catch((error) => {
+        toast.error("Failed to mark the assignment");
+      });
   };
 
   return (
@@ -40,7 +62,7 @@ const PendingAssignments = () => {
               </tr>
             </thead>
             <tbody>
-              {initialAssignments.map((assignment, index) => (
+              {assignments.map((assignment, index) => (
                 <tr key={assignment._id}>
                   <th>{index + 1}</th>
                   <td>{assignment.title}</td>
@@ -98,7 +120,7 @@ const PendingAssignments = () => {
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700  rounded-2xl md:p-6 p-4 w-[99vw] h-fit md:w-[50vw] md:h-[65vh]"
+              className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700  rounded-2xl md:p-6 p-4 w-[99vw] h-fit md:w-[50vw] md:h-fit"
             >
               <div className="md:space-y-6 pb-5">
                 <h2 className="text-2xl font-bold mb-4">
@@ -122,15 +144,17 @@ const PendingAssignments = () => {
                   {singleAssignment?.notes}
                 </h3>
               </div>
-              <form>
+              <form onSubmit={(e) => handleUpdate(e, singleAssignment?._id)}>
                 <label htmlFor="mark" className="font-bold">
-                  Mark ( 0-100 )
+                  Mark ( highest : {singleAssignment?.marks} )
                 </label>
                 <input
                   type="number"
                   name="mark"
                   required
                   placeholder="Assignment Mark"
+                  min={0}
+                  max={singleAssignment?.marks}
                   className="w-full border rounded-xl p-3 my-3"
                 />
                 <label className="font-bold">Feedback</label>
