@@ -110,15 +110,6 @@ const Navbar = () => {
                   </NavLink>
                 </>
               )}
-              <motion.li
-                initial={{ x: "-100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex items-center gap-2"
-              >
-                <p>Change Theme</p>
-                <ThemeToggleBtn></ThemeToggleBtn>
-              </motion.li>
             </ul>
           </motion.div>
         )}
@@ -165,6 +156,9 @@ const Navbar = () => {
         </div>
         <div>
           <div className="flex items-center md:gap-5 gap-4">
+            <div className="md:hidden">
+              <ThemeToggleBtn></ThemeToggleBtn>
+            </div>
             {user && (
               <div className="tooltip tooltip-left" data-tip={user.displayName}>
                 <img

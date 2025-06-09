@@ -10,6 +10,7 @@ import axiosSecure from "../utils/axiosSecure";
 import CreateAssignment from "../pages/CreateAssignment";
 import Spinner from "../components/Spinner";
 import ErrorPage from "../components/ErrorPage";
+import PendingAssignments from "../pages/PendingAssignments";
 
 export const Router = createBrowserRouter([
   {
@@ -53,6 +54,17 @@ export const Router = createBrowserRouter([
             <CreateAssignment></CreateAssignment>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/pending-assignments",
+        element: (
+          <PrivateRoute>
+            <PendingAssignments></PendingAssignments>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          axiosSecure.get("/submitedassignments").then((res) => res.data),
+        hydrateFallbackElement: <Spinner></Spinner>,
       },
     ],
   },
