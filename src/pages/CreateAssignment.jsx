@@ -5,9 +5,9 @@ import { AuthContext } from "../context/AuthProvider";
 import axiosSecure from "../utils/axiosSecure";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
-
+import { motion } from "motion/react";
 const CreateAssignment = () => {
-  const { user } = use(AuthContext);
+  const { user, loading } = use(AuthContext);
   const [dueDate, setDueDate] = useState(null);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -34,9 +34,18 @@ const CreateAssignment = () => {
       });
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="mt-34 mb-20 lg:w-9/12 mx-auto p-6 rounded-xl shadow-md border">
-      <h2 className="text-2xl font-semibold mb-6 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: -70 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="mt-34 mb-20 lg:w-9/12 mx-auto p-6 rounded-xl shadow-md border"
+    >
+      <h2 className="text-2xl font-semibold mb-10 text-center">
         Create an Assignment
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -123,7 +132,7 @@ const CreateAssignment = () => {
           Create Assignment
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

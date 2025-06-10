@@ -25,7 +25,7 @@ const Navbar = () => {
     if (show) {
       const timeout = setTimeout(() => {
         setShow(false);
-      }, 4000);
+      }, 5000);
       return () => clearTimeout(timeout);
     }
   }, [show]);
@@ -209,14 +209,17 @@ const Navbar = () => {
                   Create Assignment
                 </motion.li>
               </Link>
-              <Link onClick={() => setShow(false)}>
+              <Link
+                to="/my-attempted-assignments"
+                onClick={() => setShow(false)}
+              >
                 <motion.li
                   initial={{ opacity: 0, x: -200 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.9, delay: 0.5 }}
                   className="cursor-pointer hover:bg-gray-400 rounded-md px-2"
                 >
-                  My Submitted Assignments
+                  My Attempted Assignments
                 </motion.li>
               </Link>
             </ul>

@@ -72,23 +72,27 @@ const Assignments = () => {
       });
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     const searchTerm = e.target.value;
-    const filteredAssignments = initialAssignments.filter((assignment) =>
-      assignment.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setAssignments(filteredAssignments);
+    try {
+      const searchedAssignments = await axiosSecure.get(
+        `/assignments?search=${searchTerm}`
+      );
+      setAssignments(searchedAssignments.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const handleFilter = (e) => {
+  const handleFilter = async (e) => {
     const filterValue = e.target.value;
-    if (filterValue === "All") {
-      setAssignments(initialAssignments);
-    } else {
-      const filteredAssignments = initialAssignments.filter(
-        (assignment) => assignment.difficulty === filterValue
+    try {
+      const filteredAssignments = await axiosSecure.get(
+        `/assignments?difficulty=${filterValue}`
       );
-      setAssignments(filteredAssignments);
+      setAssignments(filteredAssignments.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
