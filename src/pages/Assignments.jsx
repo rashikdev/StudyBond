@@ -72,6 +72,26 @@ const Assignments = () => {
       });
   };
 
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+    const filteredAssignments = initialAssignments.filter((assignment) =>
+      assignment.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setAssignments(filteredAssignments);
+  };
+
+  const handleFilter = (e) => {
+    const filterValue = e.target.value;
+    if (filterValue === "All") {
+      setAssignments(initialAssignments);
+    } else {
+      const filteredAssignments = initialAssignments.filter(
+        (assignment) => assignment.difficulty === filterValue
+      );
+      setAssignments(filteredAssignments);
+    }
+  };
+
   return (
     <div className="w-11/12 mx-auto mt-40 mb-10">
       <div className="w-11/12 mx-auto mb-10 text-center">
@@ -94,6 +114,7 @@ const Assignments = () => {
           a specific one quickly.
         </motion.p>
         <input
+          onChange={handleSearch}
           type="search"
           placeholder="Search by title ..."
           className="w-full md:w-1/2 px-4 py-2 my-5 border-1 border-gray-500 rounded-full outline-none"
@@ -102,6 +123,7 @@ const Assignments = () => {
       <div className="flex justify-end items-center gap-2 mb-8">
         <h4 className="font-semibold text-xl">Filter :</h4>
         <select
+          onChange={handleFilter}
           name="difficulty"
           className="border-1 border-gray-500 p-1 rounded-2xl bg-base-100"
         >
@@ -128,12 +150,14 @@ const Assignments = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="fixed h-[100vh] w-[100vw] top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-black/20 backdrop-blur-md">
+          className="fixed h-[100vh] w-[100vw] top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-black/20 backdrop-blur-md"
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700 w-[90vw] h-[60vh] md:w-[55vw] rounded-2xl flex flex-col items-center justify-center gap-4">
+            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700 w-[90vw] h-[60vh] md:w-[55vw] rounded-2xl flex flex-col items-center justify-center gap-4"
+          >
             <div className="">
               <form onSubmit={handleUpdate} className="space-y-4">
                 <div className="flex flex-col gap-2 md:flex-row md:space-x-4">
