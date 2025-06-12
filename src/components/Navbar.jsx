@@ -38,7 +38,7 @@ const Navbar = () => {
           onClick={() => {
             setOpen(!isOpen);
           }}
-          className="md:hidden"
+          className="lg:hidden"
         >
           <Hamburger toggled={isOpen} toggle={setOpen} size={26}></Hamburger>
         </button>
@@ -119,10 +119,10 @@ const Navbar = () => {
           </motion.div>
         )}
         <Link to="/">
-          <h1 className={`md:text-2xl font-semibold uppercase`}>Study Bond</h1>
+          <h1 className={`md:text-2xl font-semibold uppercase md:-ml-30 lg:-ml-0`}>Study Bond</h1>
         </Link>
         <div>
-          <ul className="gap-6 hidden md:flex items-center">
+          <ul className="gap-6 hidden lg:flex items-center">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -209,10 +209,7 @@ const Navbar = () => {
                   Create Assignment
                 </motion.li>
               </Link>
-              <Link
-                to="/my-attempted-assignments"
-                onClick={() => setShow(false)}
-              >
+              <Link to="/my-assignments" onClick={() => setShow(false)}>
                 <motion.li
                   initial={{ opacity: 0, x: -200 }}
                   animate={{ opacity: 1, x: 0 }}

@@ -16,7 +16,7 @@ const AssignmentDetails = () => {
     if (difficulty === "Medium") return "bg-yellow-200 text-yellow-800";
     return "bg-red-200 text-red-800";
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
@@ -28,7 +28,7 @@ const AssignmentDetails = () => {
     data.title = title;
     data.id = _id;
     // send data to server
-    axiosSecure
+    await axiosSecure
       .post("/submitedassignment", data)
       .then((res) => {
         if (res.data.insertedId) {
@@ -111,6 +111,7 @@ const AssignmentDetails = () => {
                 required
                 name="notes"
                 type="text"
+                minLength={20}
                 placeholder="Your Quick Notes:"
                 className="w-full border rounded-xl my-3 p-3"
                 rows="4"

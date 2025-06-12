@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { motion, scale } from "motion/react";
 import bgVideo from "../assets/bgvideo.mp4";
 import {
   FaFacebook,
@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
 import { Link } from "react-router";
+import { TbArrowDownToArc } from "react-icons/tb";
 
 const Banner = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -37,7 +38,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative h-[92vh] overflow-hidden">
+    <div className="relative h-[100vh] overflow-hidden">
       {/* Loader */}
       {!videoLoaded && (
         <div className="flex items-center justify-center w-full h-[100vh] text-gray-900 dark:text-gray-100 dark:bg-gray-950">
@@ -63,7 +64,7 @@ const Banner = () => {
       )}
 
       {/*  Video Background */}
-      <video
+      <motion.video
         src={bgVideo}
         autoPlay
         loop
@@ -75,8 +76,53 @@ const Banner = () => {
 
       {/* Content Overlay */}
       <div className="absolute top-0 left-0 w-full h-full z-10 text-white">
+        {/* Banner Text */}
+        <div className="absolute top-30 left-5 md:top-55 md:left-10 space-y-8 text-center md:text-left">
+          <motion.h1
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 2, delay: 0.2, ease: "backInOut" }}
+            viewport={{ once: true }}
+            className="md:text-5xl text-3xl font-bold bg-gradient-to-tl from-green-800 to-green-100 py-2 bg-clip-text text-transparent"
+          >
+            Study Together. Grow Smarter.
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-left text-zinc-500"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Join{" "}
+            <span className="uppercase font-thin underline underline-offset-4 text-green-300">
+              Study Bond
+            </span>{" "}
+            – a collaborative platform <br className="hidden md:block" />
+            where friends share, submit, and grade assignments together.
+          </motion.p>
+        </div>
+        <Link to="/assignments">
+          <motion.button
+            initial={{ opacity: 0, y: 50, scale: 0 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute bottom-56 md:bottom-75 backdrop-blur-md md:p-4 p-3 shadow-[0_0_35px_#0dac17c3] rounded-[30px_0_30px_0px] cursor-pointer left-1/2 transform -translate-x-1/2 text-green-400 font-semibold animate-pulse hover:text-white hover:bg-green-600"
+          >
+            Get Started
+          </motion.button>
+        </Link>
+        <button
+          onClick={() => window.scrollTo({ top: 1045, behavior: "smooth" })}
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        >
+          <TbArrowDownToArc
+            size={30}
+            className="animate-bounce bg-blend-screen backdrop-blur-md text-[#196b11fb]"
+          />
+        </button>
         {/* Social Icons */}
-        <div className="absolute top-40 left-10 hidden md:flex">
+        {/* <div className="absolute bottom-90 right-10 hidden md:flex">
           <motion.ul
             variants={containerVariants}
             initial="hidden"
@@ -101,10 +147,9 @@ const Banner = () => {
               </motion.a>
             ))}
           </motion.ul>
-        </div>
-
+        </div> */}
         {/* Mobile Social Icons */}
-        <div className="absolute bottom-5 left-2 md:hidden">
+        {/* <div className="absolute bottom-5 left-2 md:hidden">
           <h2 className="text-2xl mb-3 font-thin">Social Contact</h2>
           <motion.ul
             variants={containerVariants}
@@ -130,47 +175,7 @@ const Banner = () => {
               </motion.a>
             ))}
           </motion.ul>
-        </div>
-
-        {/* Banner Text */}
-        <div className="absolute bottom-32 left-10 space-y-10">
-          <motion.h1
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 2, delay: 0.2, ease: "backInOut" }}
-            viewport={{ once: true }}
-            className="text-5xl font-bold"
-          >
-            Study Together. Grow Smarter.
-          </motion.h1>
-          <motion.p
-            className="text-lg text-center md:text-left"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            Join{" "}
-            <span className="uppercase font-thin underline underline-offset-4 text-green-300">
-              Study Bond
-            </span>{" "}
-            – a collaborative platform <br className="hidden md:block" />
-            where friends share, submit, and grade assignments together.
-          </motion.p>
-          <Link to="/assignments">
-            <motion.button
-              className="border px-6 py-2 rounded-full transition-all duration-200 cursor-pointer bg-white/20 backdrop-blur-[2px]"
-              initial={{ opacity: 0, scale: 0.5, x: 30 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 1.5, ease: "backOut", delay: 0.4 }}
-              whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
-              whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-              viewport={{ once: true }}
-            >
-              Get Started
-            </motion.button>
-          </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

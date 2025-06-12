@@ -24,8 +24,12 @@ const PendingAssignments = () => {
 
   const handleUpdate = (e, id) => {
     e.preventDefault();
+    const form = e.target;
+    const givenMark = parseInt(form.givenMark.value);
+    const feedback = form.feedback.value;
+    const data = { givenMark, feedback };
     axiosSecure
-      .patch(`/submitedassignment/${id}`)
+      .patch(`/submitedassignment/${id}`, data)
       .then((res) => {
         if (res.data.modifiedCount) {
           toast.success("Assignment marked successfully");
@@ -150,7 +154,7 @@ const PendingAssignments = () => {
                 </label>
                 <input
                   type="number"
-                  name="mark"
+                  name="givenMark"
                   required
                   placeholder="Assignment Mark"
                   min={0}
@@ -161,6 +165,7 @@ const PendingAssignments = () => {
                 <textarea
                   required
                   name="feedback"
+                  minLength={20}
                   type="text"
                   placeholder="Assignment Feedback"
                   className="w-full border rounded-xl my-3 p-3"

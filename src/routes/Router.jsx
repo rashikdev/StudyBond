@@ -11,7 +11,7 @@ import CreateAssignment from "../pages/CreateAssignment";
 import Spinner from "../components/Spinner";
 import ErrorPage from "../components/ErrorPage";
 import PendingAssignments from "../pages/PendingAssignments";
-
+import MyAssignments from "../pages/MyAssignments";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +56,14 @@ export const Router = createBrowserRouter([
         ),
       },
       {
+        path: "/my-assignments",
+        element: (
+          <PrivateRoute>
+            <MyAssignments></MyAssignments>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/pending-assignments",
         element: (
           <PrivateRoute>
@@ -63,7 +71,9 @@ export const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () =>
-          axiosSecure.get("/submitedassignments").then((res) => res.data),
+          axiosSecure
+            .get(`/submitedassignments?status=pending`)
+            .then((res) => res.data),
         hydrateFallbackElement: <Spinner></Spinner>,
       },
     ],
