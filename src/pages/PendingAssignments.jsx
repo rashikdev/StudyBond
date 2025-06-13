@@ -46,7 +46,7 @@ const PendingAssignments = () => {
     <div className="md:w-11/12 min-h-[calc(100vh-250px)] mx-auto md:mt-30 mt-20">
       <div className="p-6 flex flex-col justify-center items-center gap-10">
         <div className="text-center my-8">
-          <h1 className="text-2xl md:text-3xl font-semibold">
+          <h1 className="text-2xl md:text-3xl font-semibold bg-gradient-to-br to-green-400 text-transparent bg-clip-text">
             Review Submissions
           </h1>
           <p className="text-gray-400 mt-2 text-sm md:text-base">
@@ -75,7 +75,7 @@ const PendingAssignments = () => {
                   <td className="flex justify-center">
                     <button
                       onClick={() => getSingleAssignment(assignment._id)}
-                      className="bg-indigo-500 text-white px-4 py-1 rounded-full cursor-pointer"
+                      className="px-4 py-2 rounded-full cursor-pointer shadow-[0_0_20px_#0dac17b8] font-semibold bg-black text-white"
                     >
                       Give mark
                     </button>
@@ -90,7 +90,7 @@ const PendingAssignments = () => {
           {initialAssignments.map((assignment, index) => (
             <div
               key={assignment._id}
-              className="border rounded-xl p-3 space-y-3"
+              className="border border-green-300 rounded-xl p-3 space-y-3"
             >
               <p className="font-semibold">Assignment : {assignment.title}</p>
               <p className="">
@@ -105,7 +105,7 @@ const PendingAssignments = () => {
                 </p>
                 <button
                   onClick={() => getSingleAssignment(assignment._id)}
-                  className="border text-white px-2 py-[2px] rounded-lg cursor-pointer"
+                  className="text-white px-2 py-[2px] rounded-lg cursor-pointer shadow-[0_0_20px_#0dac17b8] font-semibold bg-black"
                 >
                   Give mark
                 </button>
@@ -124,11 +124,14 @@ const PendingAssignments = () => {
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700  rounded-2xl md:p-6 p-4 w-[99vw] h-fit md:w-[50vw] md:h-fit"
+              className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700  rounded-2xl md:p-6 p-4 w-[99vw] h-fit md:w-[50vw] md:h-fit text-white"
             >
               <div className="md:space-y-6 pb-5">
                 <h2 className="text-2xl font-bold mb-4">
-                  Give Mark for "{singleAssignment?.title}"
+                  Give Mark for{" "}
+                  <span className="text-[#0ccb26]">
+                    "{singleAssignment?.title}"
+                  </span>
                 </h2>
                 <h3 className="break-words">
                   <span className="font-bold text-yellow-500">
@@ -145,7 +148,7 @@ const PendingAssignments = () => {
                 </h3>
                 <h3 className="break-words">
                   <span className="font-bold text-yellow-500">Notes:</span>{" "}
-                  {singleAssignment?.notes}
+                  <span className="text-gray-400">{singleAssignment?.notes}</span>
                 </h3>
               </div>
               <form onSubmit={(e) => handleUpdate(e, singleAssignment?._id)}>
@@ -176,7 +179,7 @@ const PendingAssignments = () => {
                     whileTap={{ scale: 0.3 }}
                     transition={{ duration: 0.2 }}
                     onClick={() => setOpen(false)}
-                    className="px-7 py-2 rounded-full cursor-pointer transition-all shadow-[0_0_10px_white] bg-red-700"
+                    className="px-7 py-2 rounded-full cursor-pointer transition-all hover:shadow-[0_0_10px_white] bg-red-700"
                   >
                     Cancel
                   </motion.button>
@@ -184,7 +187,7 @@ const PendingAssignments = () => {
                     whileTap={{ scale: 0.3 }}
                     transition={{ duration: 0.2 }}
                     type="submit"
-                    className="px-7 py-2 rounded-full cursor-pointer transition-all  shadow-[0_0_10px_white] bg-white text-black"
+                    className="px-7 py-2 rounded-full cursor-pointer transition-all hover:shadow-[0_0_10px_white] bg-gradient-to-br from-black to-green-500"
                   >
                     Submit
                   </motion.button>

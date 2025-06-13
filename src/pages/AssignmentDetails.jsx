@@ -51,7 +51,7 @@ const AssignmentDetails = () => {
       initial={{ opacity: 0, y: 90 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="max-w-4xl mx-auto px-4 py-10 md:mt-30 mt-16 mb-5"
+      className="max-w-4xl mx-auto px-4 py-10 md:mt-30 mt-16 mb-5 text-white"
     >
       <div className="bg-gray-900 shadow-lg rounded-2xl p-6">
         <img
@@ -67,19 +67,19 @@ const AssignmentDetails = () => {
             {difficulty}
           </span>
         </div>
-        <p className="mb-4">{description}</p>
+        <p className="mb-4 text-gray-400">{description}</p>
 
         <div className="flex items-center justify-between mb-6">
           <span className="text-sm">
-            Due Date: <strong>{dueDate}</strong>
+            Due Date: <strong className="text-yellow-400">{dueDate}</strong>
           </span>
           <span className="text-sm">
-            Marks: <strong>{marks}</strong>
+            Marks: <strong className="text-green-400">{marks}</strong>
           </span>
         </div>
         <button
           onClick={() => setOpen(true)}
-          className="w-full border text-white text-lg font-semibold py-2 rounded-full cursor-pointer"
+          className="w-full text-white text-lg font-semibold py-2 rounded-full cursor-pointer bg-black shadow-[0_0px_10px_0px_white] hover:bg-gray-800 transition duration-300 ease-in-out"
         >
           Take Assignment
         </button>
@@ -95,7 +95,7 @@ const AssignmentDetails = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700 w-[90vw] h-fit md:h-[42vh] md:w-[40vw] rounded-2xl p-6"
+            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700 w-[90vw] h-fit md:h-[42vh] md:w-[40vw] rounded-2xl p-6 text-white"
           >
             <form onSubmit={handleSubmit}>
               <label htmlFor="">Google Docs Link</label>
@@ -121,7 +121,7 @@ const AssignmentDetails = () => {
                   whileTap={{ scale: 0.3 }}
                   transition={{ duration: 0.2 }}
                   onClick={() => setOpen(false)}
-                  className="px-7 py-2 rounded-full cursor-pointer transition-all shadow-[0_0_10px_white] bg-red-700"
+                  className="px-7 py-2 rounded-full cursor-pointer transition-all hover:shadow-[0_0_10px_white] bg-red-700"
                 >
                   Cancel
                 </motion.button>
@@ -129,7 +129,8 @@ const AssignmentDetails = () => {
                   whileTap={{ scale: 0.3 }}
                   transition={{ duration: 0.2 }}
                   type="submit"
-                  className="px-7 py-2 rounded-full cursor-pointer transition-all  shadow-[0_0_10px_white] bg-white text-black"
+                  className="px-7 py-2 rounded-full cursor-pointer transition-all hover:shadow-[0_0_10px_white] bg-gradient-to-br to-green-600
+                  from-black/40"
                 >
                   Submit
                 </motion.button>

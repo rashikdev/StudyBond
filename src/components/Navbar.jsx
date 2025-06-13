@@ -30,7 +30,7 @@ const Navbar = () => {
     }
   }, [show]);
 
-  // const theme = document.documentElement.getAttribute("data-theme") === "black";
+  // const theme = document.documentElement.getAttribute("data-theme") !== "black";
   return (
     <div className="fixed top-0 left-0 w-full z-[999]">
       <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
@@ -119,7 +119,11 @@ const Navbar = () => {
           </motion.div>
         )}
         <Link to="/">
-          <h1 className={`md:text-2xl font-semibold uppercase md:-ml-30 lg:-ml-0`}>Study Bond</h1>
+          <h1
+            className={`md:text-2xl font-semibold uppercase md:-ml-30 lg:-ml-0`}
+          >
+            Study Bond
+          </h1>
         </Link>
         <div>
           <ul className="gap-6 hidden lg:flex items-center">

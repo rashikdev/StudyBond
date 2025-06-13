@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import AskQuestion from "./AskQuestion";
 import { useState } from "react";
 import toast from "react-hot-toast";
 export default function App() {
@@ -17,18 +16,23 @@ export default function App() {
     }, 1000);
   };
   return (
-    <div className="md:w-10/12 mx-auto md:my-20 lg:my-50">
+    <div className="md:w-10/12 mx-auto md:my-20 lg:my-50 overflow-hidden">
       <div className="lg:hidden pb-10">
-        <h2 className="text-2xl text-center font-bold">Frequently Asked Questions</h2>
+        <h2 className="text-2xl text-center font-bold">
+          Frequently Asked Questions
+        </h2>
       </div>
       <div className="flex flex-col-reverse lg:flex-row gap-10">
         <motion.div
-        initial={{ opacity: 0, scale: 0.6 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-        className="w-full flex flex-col justify-between p-4">
+          initial={{ opacity: 0, scale: 0.6 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="w-full flex flex-col justify-between p-4"
+        >
           <div className="hidden lg:block">
-            <h2 className="text-5xl font-bold">Frequently Asked Questions</h2>
+            <h2 className="text-5xl font-bold text-yellow-500">
+              Frequently Asked Questions
+            </h2>
           </div>
           <div className=" rounded-2xl h-[12rem] md:w-[26rem] bg-zinc-900 p-4 flex flex-col justify-between items-start text-white">
             <h3 className="text-2xl font-bold ">
@@ -51,54 +55,54 @@ export default function App() {
             initial={{ opacity: 0, x: 150 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            className="  rounded-2xl h-[400px] space-y-5"
+            className="space-y-5"
           >
-            <div className="collapse collapse-arrow ">
+            <div className="collapse collapse-arrow">
               <input defaultChecked type="radio" name="my-accordion-2" />
-              <div className="collapse-title font-semibold">
+              <div className="collapse-title font-semibold border-l-4 border-green-500">
                 Who can create assignments?
               </div>
-              <div className="collapse-content text-sm">
+              <div className="collapse-content text-sm border-l-4">
                 Any registered user can create assignments. All users are
                 considered friends and collaborators.
               </div>
             </div>
             <div className="collapse collapse-arrow ">
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title font-semibold">
+              <div className="collapse-title font-semibold border-l-4 border-green-500">
                 Can I grade my own submitted assignment?
               </div>
-              <div className="collapse-content text-sm">
+              <div className="collapse-content text-sm border-l-4">
                 No, you can only evaluate assignments submitted by others. This
                 helps maintain fairness in peer grading.
               </div>
             </div>
             <div className="collapse collapse-arrow ">
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title font-semibold">
+              <div className="collapse-title font-semibold border-l-4 border-green-500">
                 Can I grade my own submitted assignment?
               </div>
-              <div className="collapse-content text-sm">
+              <div className="collapse-content text-sm border-l-4">
                 No, you can only evaluate assignments submitted by others. This
                 helps maintain fairness in peer grading.
               </div>
             </div>
             <div className="collapse collapse-arrow ">
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title font-semibold">
+              <div className="collapse-title font-semibold border-l-4 border-green-500">
                 Is STUDY BOND free to use?
               </div>
-              <div className="collapse-content text-sm">
+              <div className="collapse-content text-sm border-l-4">
                 Yes! STUDY BOND is completely free for all users. It’s built to
                 encourage collaborative learning.
               </div>
             </div>
             <div className="collapse collapse-arrow ">
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title font-semibold">
+              <div className="collapse-title font-semibold border-l-4 border-green-500">
                 How is my data secured?
               </div>
-              <div className="collapse-content text-sm">
+              <div className="collapse-content text-sm border-l-4">
                 We use Firebase Authentication and environment-protected APIs,
                 along with JWT tokens to ensure user data is safe.
               </div>

@@ -56,6 +56,7 @@ const Assignments = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
+    console.log(data);
     axiosSecure
       .put(`/assignments/${Id}`, data)
       .then((res) => {
@@ -103,7 +104,7 @@ const Assignments = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl md:text-5xl font-bold text-text-white mb-4"
+          className="text-3xl md:text-5xl font-bold bg-gradient-to-bl to-green-500 bg-clip-text text-transparent mb-4 pb-2"
         >
           Browse Assignments
         </motion.h1>
@@ -111,7 +112,7 @@ const Assignments = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          className="max-w-2xl mx-auto mb-6"
+          className="max-w-2xl mx-auto mb-6 text-gray-400"
         >
           Discover all available assignments, filter by difficulty, and find
           tasks that challenge and grow your skills. Use the search box to find
@@ -121,7 +122,7 @@ const Assignments = () => {
           onChange={handleSearch}
           type="search"
           placeholder="Search by title ..."
-          className="w-full md:w-1/2 px-4 py-2 my-5 border-1 border-gray-500 rounded-full outline-none"
+          className="w-full md:w-1/2 px-4 py-2 my-5 rounded-full outline-none border-1 bg-base-300 border-green-500"
         />
       </div>
       <div className="flex justify-end items-center gap-2 mb-8">
@@ -129,7 +130,7 @@ const Assignments = () => {
         <select
           onChange={handleFilter}
           name="difficulty"
-          className="border-1 border-gray-500 p-1 rounded-2xl bg-base-100"
+          className="border border-gray-500 p-1 rounded-2xl bg-base-100 outline-none"
         >
           <option value="All">All</option>
           <option value="Easy">Easy</option>
@@ -160,10 +161,10 @@ const Assignments = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700 w-[90vw] h-[60vh] md:w-[55vw] rounded-2xl flex flex-col items-center justify-center gap-4"
+            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700 w-[90vw] h-fit md:w-[55vw] rounded-2xl flex flex-col items-center justify-center gap-4 p-3 md:p-10"
           >
             <div className="">
-              <form onSubmit={handleUpdate} className="space-y-4">
+              <form onSubmit={handleUpdate} className="md:space-y-4">
                 <div className="flex flex-col gap-2 md:flex-row md:space-x-4">
                   <div className="flex-1">
                     <label className="w-full font-medium mb-1">Title</label>
@@ -177,7 +178,7 @@ const Assignments = () => {
                           title: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-4 my-3"
+                      className="w-full border rounded-lg px-4 py-3 md:py-4 my-3"
                       placeholder="Enter assignment title"
                       required
                     />
@@ -195,7 +196,7 @@ const Assignments = () => {
                           description: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-2 h-20 md:h-[56px] my-3"
+                      className="w-full border rounded-lg px-4 py-2 h-15 md:h-[56px] md:my-3"
                       placeholder="Enter assignment description"
                       required
                     />
@@ -214,7 +215,7 @@ const Assignments = () => {
                           marks: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-4 my-3"
+                      className="w-full border rounded-lg px-4 py-3 md:py-4 md:my-3"
                       placeholder="Enter total marks"
                       required
                     />
@@ -234,7 +235,7 @@ const Assignments = () => {
                           thumbnail: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-4 my-3"
+                      className="w-full border rounded-lg px-4 py-3 md:py-4 my-3"
                       placeholder="https://example.com/image.jpg"
                       required
                     />
@@ -255,16 +256,16 @@ const Assignments = () => {
                           difficulty: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-4 my-3"
+                      className="w-full border rounded-lg px-4 py-3 md:py-4 my-3"
                       required
                     >
-                      <option className="text-black" value="easy">
+                      <option className="text-black" value="Easy">
                         Easy
                       </option>
-                      <option className="text-black" value="medium">
+                      <option className="text-black" value="Medium">
                         Medium
                       </option>
-                      <option className="text-black" value="hard">
+                      <option className="text-black" value="Hard">
                         Hard
                       </option>
                     </select>
@@ -288,7 +289,7 @@ const Assignments = () => {
                           }))
                         }
                         placeholderText="Select due date"
-                        className="w-full border rounded-lg px-4 py-4"
+                        className="w-full border rounded-lg px-4 py-3 md:py-4"
                         wrapperClassName="w-full"
                         required
                       />
@@ -299,13 +300,13 @@ const Assignments = () => {
                   <button
                     onClick={() => setOpen(false)}
                     type="button"
-                    className="bg-red-600 text-white rounded-md hover:bg-red-400 transition px-4 py-2 cursor-pointer font-bold"
+                    className="bg-red-600 text-white rounded-full hover:bg-red-400 transition px-4 py-2 cursor-pointer font-bold"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="bg-green-600 text-white rounded-md hover:bg-green-700 transition px-4 py-2 cursor-pointer font-bold"
+                    className="bg-gradient-to-br to-green-600 text-white rounded-full hover:bg-green-700 transition px-4 py-2 cursor-pointer font-bold"
                   >
                     Update Assignment
                   </button>

@@ -8,7 +8,7 @@ const FeatureSection = () => {
   return (
     <section className="py-16 px-4 mt-40">
       <div className="text-center mb-10">
-        <h2 className="md:text-3xl text-xl font-bold mb-2">
+        <h2 className="md:text-3xl text-xl font-bold mb-2 bg-gradient-to-bl to-green-400 bg-clip-text text-transparent">
           Why Choose Study Bond?
         </h2>
         <p className="text-gray-400">

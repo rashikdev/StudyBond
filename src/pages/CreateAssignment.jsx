@@ -105,9 +105,9 @@ const CreateAssignment = () => {
               className="w-full border rounded-lg px-4 py-4 my-3 bg-base-100"
               required
             >
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
             </select>
           </div>
           <div className="flex-1">
