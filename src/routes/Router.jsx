@@ -12,6 +12,7 @@ import Spinner from "../components/Spinner";
 import ErrorPage from "../components/ErrorPage";
 import PendingAssignments from "../pages/PendingAssignments";
 import MyAssignments from "../pages/MyAssignments";
+import DasheBoard from "../pages/DasheBoard";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -75,6 +76,14 @@ export const Router = createBrowserRouter([
             .get(`/submitedassignments?status=pending`)
             .then((res) => res.data),
         hydrateFallbackElement: <Spinner></Spinner>,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <DasheBoard></DasheBoard>
+          </PrivateRoute>
+        ),
       },
     ],
   },

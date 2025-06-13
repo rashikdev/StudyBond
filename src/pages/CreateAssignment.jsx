@@ -43,7 +43,7 @@ const CreateAssignment = () => {
       initial={{ opacity: 0, y: -70 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="mt-34 mb-20 lg:w-9/12 mx-auto p-6 rounded-xl shadow-md border"
+      className="mt-34 mb-20 lg:w-9/12 mx-auto p-6 md:p-10 rounded-xl bg-gray-800 text-white"
     >
       <h2 className="text-2xl font-semibold mb-10 text-center">
         Create an Assignment
@@ -102,7 +102,7 @@ const CreateAssignment = () => {
             <label className="w-full font-medium mb-1">Difficulty Level</label>
             <select
               name="difficulty"
-              className="w-full border rounded-lg px-4 py-4 my-3 bg-base-100"
+              className="w-full border rounded-lg px-4 py-4 my-3"
               required
             >
               <option value="Easy">Easy</option>
@@ -127,7 +127,7 @@ const CreateAssignment = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+          className="w-full text-white text-lg font-semibold py-2 rounded-full cursor-pointer bg-black shadow-[0_0px_10px_0px_white] hover:bg-gray-800 transition duration-300 ease-in-out md:mt-4"
         >
           Create Assignment
         </button>

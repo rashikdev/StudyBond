@@ -65,7 +65,7 @@ const Banner = () => {
         {/* Content Overlay */}
         <div className="absolute top-0 left-0 w-full h-full z-10 text-white">
           {/* Banner Text */}
-          <div className="absolute top-5 left-5 md:top-15 md:left-10 md:space-y-8 text-center md:text-left">
+          <div className="absolute top-5 left-5 md:top-38 md:left-10 md:space-y-8 text-center md:text-left">
             <motion.h1
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}

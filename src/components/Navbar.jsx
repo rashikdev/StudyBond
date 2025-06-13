@@ -25,7 +25,7 @@ const Navbar = () => {
     if (show) {
       const timeout = setTimeout(() => {
         setShow(false);
-      }, 5000);
+      }, 8000);
       return () => clearTimeout(timeout);
     }
   }, [show]);
@@ -47,7 +47,7 @@ const Navbar = () => {
             initial={{ x: "-100%", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-50 py-3 rounded-r-4xl bg-white backdrop-blur-lg absolute -left-2 top-20 z-50 text-black flex justify-center items-center"
+            className="w-50 py-3 rounded-r-4xl bg-black/50 absolute -left-2 top-20 z-50 text-white flex justify-center items-center"
           >
             <ul className="flex flex-col gap-5 text-[16px]">
               <NavLink
@@ -161,7 +161,7 @@ const Navbar = () => {
           <ThemeToggleBtn></ThemeToggleBtn>
         </div>
         <div className="absolute hidden lg:block right-70 border-r-2 border-l-2 rounded-full px-4 py-1 hover:scale-105 cursor-pointer transition-all duration-300">
-          <NavLink>Dashboard</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
         </div>
         <div>
           <div className="flex items-center md:gap-5 gap-4">
@@ -187,7 +187,7 @@ const Navbar = () => {
                 </Link>
               ) : (
                 <Link to="/login">
-                  <button className="border-2 rounded-full px-4 py-1 cursor-pointer">
+                  <button className="border-2 border-green-600 rounded-full px-4 py-1 cursor-pointer hover:bg-white/20">
                     Login
                   </button>
                 </Link>
@@ -200,7 +200,7 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0, y: -200 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute right-0 top-20 px-4 py-8 bg-white/90 backdrop-blur-md rounded-lg text-black"
+            className="absolute right-0 top-20 px-4 py-8 bg-gray-700/55 rounded-lg text-white"
           >
             <ul className="flex flex-col gap-3 font-semibold overflow-hidden">
               <Link to="/create-assignment" onClick={() => setShow(false)}>

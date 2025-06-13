@@ -25,11 +25,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-250px)] flex flex-col lg:flex-row items-center justify-center">
-      <div className="flex items-center justify-center w-[30%]">
+    <div className="min-h-[calc(100vh-250px)] flex flex-col lg:flex-row items-center justify-center md:mt-0 mt-25">
+      <div className="flex items-center justify-center w-[87%] lg:w-[30%]">
         <form
           onSubmit={handleLogin}
-          className="relative bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/30 shadow-xl flex flex-col items-center space-y-4 text-white w-full"
+          className="relative bg-zinc-900 p-8 rounded-2xl border border-white/30 shadow-xl flex flex-col items-center space-y-4 w-full text-white"
         >
           <h2 className="text-2xl font-semibold">Login Please</h2>
           <input
@@ -37,7 +37,7 @@ const Login = () => {
             name="email"
             placeholder="Email"
             required
-            className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
+            className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
           />
           <div className="relative w-full">
             <input
@@ -45,7 +45,7 @@ const Login = () => {
               name="password"
               placeholder="Password"
               required
-              className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 text-white placeholder-white/70 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
+              className="w-full px-4 py-2 rounded-full bg-transparent border border-white/30 shadow-inner focus:outline-none focus:bg-white/30 focus:shadow-lg transition"
             />
             <button
               type="button"
