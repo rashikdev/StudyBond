@@ -12,7 +12,7 @@ import Spinner from "../components/Spinner";
 import ErrorPage from "../components/ErrorPage";
 import PendingAssignments from "../pages/PendingAssignments";
 import MyAssignments from "../pages/MyAssignments";
-import DasheBoard from "../pages/DasheBoard";
+import DashBoard from "../pages/DashBoard";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -77,15 +77,15 @@ export const Router = createBrowserRouter([
             .then((res) => res.data),
         hydrateFallbackElement: <Spinner></Spinner>,
       },
-      {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <DasheBoard></DasheBoard>
-          </PrivateRoute>
-        ),
-      },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashBoard></DashBoard>
+      </PrivateRoute>
+    ),
   },
   {
     path: "*",
