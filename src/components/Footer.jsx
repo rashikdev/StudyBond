@@ -1,72 +1,83 @@
+import { FaFacebookF, FaTwitter, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router";
+
 const Footer = () => {
   return (
-    <footer className="py-10 px-5">
+    <footer className="text-base-content py-12 px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Left - Brand Info */}
+        {/* Brand Info */}
         <div>
-          <h2 className="text-2xl font-bold mb-2 uppercase">Study Bond</h2>
-          <p className="text-sm">
+          <h2 className="text-2xl font-bold mb-3 uppercase">
+            StudyBond
+          </h2>
+          <p className="text-sm leading-relaxed">
             Connect, collaborate, and grow together. A platform for group study,
             assignments, and peer feedback.
           </p>
         </div>
 
-        {/* Center - Quick Links */}
+        {/* Quick Links */}
         <div>
-          <h3 className="text-xl font-semibold mb-2">Quick Links</h3>
-          <ul className="space-y-1 text-sm">
-            <li>
-              <a href="/" className="hover:underline">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="/assignments" className="hover:underline">
-                Assignments
-              </a>
-            </li>
-            <li>
-              <a href="/create" className="hover:underline">
-                Create Assignment
-              </a>
-            </li>
-            <li>
-              <a href="/pending" className="hover:underline">
-                Pending Submissions
-              </a>
-            </li>
-            <li>
-              <a href="/login" className="hover:underline">
-                Login
-              </a>
-            </li>
+          <h3 className="text-xl font-semibold mb-3">Quick Links</h3>
+          <ul className="flex flex-col space-y-2">
+            <Link className="hover:underline" to="/">
+              Home
+            </Link>
+            <Link className="hover:underline" to="/assignments">
+              Assignments
+            </Link>
+            <Link className="hover:underline" to="create-assignment">
+              Create Assignment
+            </Link>
+            <Link className="hover:underline" to="/pending-assignments">
+              Pending Submissions
+            </Link>
+            <Link className="hover:underline" to="/login">
+              Login
+            </Link>
           </ul>
         </div>
 
-        {/* Right - Contact / Social */}
+        {/* Contact & Social */}
         <div>
-          <h3 className="text-xl font-semibold mb-2">Contact & Support</h3>
-          <p className="text-sm">Email: support@studybond.dev</p>
-          <p className="text-sm mb-2">Phone: +81-1234-567890</p>
+          <h3 className="text-xl font-semibold mb-3">Contact & Support</h3>
+          <p className="text-sm">📧 Email: support@studybond.dev</p>
+          <p className="text-sm mb-3">📞 Phone: +81-1234-567890</p>
 
-          <div className="flex space-x-4 mt-3">
-            <a href="#" className="hover:text-gray-300 transition">
-              <i className="fab fa-facebook-f"></i>
+          <div className="flex space-x-4 text-xl mt-4">
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="hover:text-blue-600 transition"
+            >
+              <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-gray-300 transition">
-              <i className="fab fa-twitter"></i>
+            <a
+              href="#"
+              aria-label="Twitter"
+              className="hover:text-sky-500 transition"
+            >
+              <FaTwitter />
             </a>
-            <a href="#" className="hover:text-gray-300 transition">
-              <i className="fab fa-github"></i>
+            <a
+              href="#"
+              aria-label="GitHub"
+              className="hover:text-gray-400 transition"
+            >
+              <FaGithub />
             </a>
-            <a href="#" className="hover:text-gray-300 transition">
-              <i className="fab fa-linkedin-in"></i>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="hover:text-blue-500 transition"
+            >
+              <FaLinkedinIn />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="text-center text-xs mt-10 text-white/70">
+      <div className="text-center text-xs mt-12 text-base-content/70">
         © {new Date().getFullYear()} StudyBond. All rights reserved.
       </div>
     </footer>

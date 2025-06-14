@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import AssignmentCard from "../components/AssignmentCard";
 import { useLoaderData } from "react-router";
 import { motion } from "motion/react";
@@ -73,6 +73,9 @@ const Assignments = () => {
       });
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const handleSearch = async (e) => {
     const searchTerm = e.target.value;
     try {
@@ -122,7 +125,7 @@ const Assignments = () => {
           onChange={handleSearch}
           type="search"
           placeholder="Search by title ..."
-          className="w-full md:w-1/2 px-4 py-2 my-5 rounded-full outline-none border-1 bg-base-300 border-green-500"
+          className="w-full md:w-1/2 px-4 py-2 my-5 rounded-full outline-none shadow-[0_0_15px] bg-base-300"
         />
       </div>
       <div className="flex justify-end items-center gap-2 mb-8">

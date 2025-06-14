@@ -130,7 +130,7 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "border-2 rounded-full px-4 py-1" : ""
+                isActive ? "border-b-2 border-green-400 rounded-full px-4 py-1" : ""
               }
             >
               Home
@@ -138,7 +138,7 @@ const Navbar = () => {
             <NavLink
               to="/assignments"
               className={({ isActive }) =>
-                isActive ? "border-2 rounded-full px-4 py-1" : ""
+                isActive ? "border-b-2 border-green-400 rounded-full px-4 py-1" : ""
               }
             >
               Assignments
@@ -148,7 +148,7 @@ const Navbar = () => {
                 <NavLink
                   to="/pending-assignments"
                   className={({ isActive }) =>
-                    isActive ? "border-2 rounded-full px-4 py-1" : ""
+                    isActive ? "border-b-2 border-green-400 rounded-full px-4 py-1" : ""
                   }
                 >
                   Pending Assignments

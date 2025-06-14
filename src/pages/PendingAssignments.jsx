@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { motion } from "motion/react";
 import axiosSecure from "../utils/axiosSecure";
@@ -41,12 +41,14 @@ const PendingAssignments = () => {
         toast.error("Failed to mark the assignment");
       });
   };
-
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
   return (
     <div className="md:w-11/12 min-h-[calc(100vh-250px)] mx-auto md:mt-30 mt-20">
       <div className="p-6 flex flex-col justify-center items-center gap-10">
         <div className="text-center my-8">
-          <h1 className="text-2xl md:text-3xl font-semibold bg-gradient-to-br to-green-400 text-transparent bg-clip-text">
+          <h1 className="text-2xl md:text-3xl font-semibold text-yellow-400">
             Review Submissions
           </h1>
           <p className="text-gray-400 mt-2 text-sm md:text-base">

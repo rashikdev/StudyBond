@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../context/AuthProvider";
@@ -38,6 +38,9 @@ const CreateAssignment = () => {
     return <div>Loading...</div>;
   }
 
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
   return (
     <motion.div
       initial={{ opacity: 0, y: -70 }}
