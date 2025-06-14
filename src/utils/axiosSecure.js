@@ -2,7 +2,7 @@ import axios from "axios";
 import { auth } from "../firebase/firebase.config";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://study-bond-server.vercel.app",
 });
 
 axiosSecure.interceptors.request.use(

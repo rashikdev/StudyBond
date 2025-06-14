@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 
 const ThemeToggleBtn = () => {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
+    () => localStorage.getItem("theme") || "black"
   );
 
   // Update theme on toggle
   const handleToggle = () => {
-    const newTheme = theme === "light" ? "black" : "light";
+    const newTheme = theme === "black" ? "light" : "black";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);

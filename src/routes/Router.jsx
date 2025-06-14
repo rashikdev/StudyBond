@@ -34,7 +34,9 @@ export const Router = createBrowserRouter([
         path: "/assignments",
         Component: Assignments,
         loader: () =>
-          fetch("http://localhost:5000/assignments").then((res) => res.json()),
+          fetch("https://study-bond-server.vercel.app/assignments").then(
+            (res) => res.json()
+          ),
         hydrateFallbackElement: <Spinner></Spinner>,
       },
       {
