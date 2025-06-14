@@ -1,12 +1,40 @@
-# React + Vite
+# STUDY BOND - Client Side (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🎯 Purpose
 
-Currently, two official plugins are available:
+STUDY BOND is a collaborative online study platform designed to help students create, share, and review assignments together. The client-side app is built with React focusing on seamless navigation, secure authentication, and a user-friendly interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> 🔗 Live Site: [https://study-bond-bd1de.web.app](https://study-bond-bd1de.web.app)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+
+- 🏠 Multi-page React app with routes: Home, Assignments, Login, Register, Dashboard
+- 🔍 Search & filter assignments by difficulty and title
+- ✅ Submit assignments & review peer submissions
+- 🌗 Persistent Light/Black theme toggle stored in localStorage
+- 🔒 User authentication & protected routes with Firebase + JWT
+- 📱 Responsive UI using TailwindCSS & DaisyUI
+
+---
+
+## 📦 NPM Packages Used
+
+- ⚛️ **react** — Core UI library
+- 🔁 **react-router-dom** — Client-side routing
+- 🔥 **firebase** — Authentication & hosting backend
+- 🎨 **tailwindcss** — Utility-first CSS framework
+- 💎 **daisyui** — TailwindCSS component library
+- 🔔 **react-hot-toast** — Toast notifications (if used)
+- 📡 **axios** — HTTP client (if used)
+- 📅 **react-datepicker** — Date picker component (if used)
+
+
+## 👨‍💻 Author:
+**Rahsik**
+
+- GitHub: https://github.com/rashik218
+- Twitter:  https://x.com/RashikKhan513
+- Email: mdrashikpdf@gmail.com
+```
