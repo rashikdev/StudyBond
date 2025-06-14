@@ -56,7 +56,6 @@ const Assignments = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-    console.log(data);
     axiosSecure
       .put(`/assignments/${Id}`, data)
       .then((res) => {

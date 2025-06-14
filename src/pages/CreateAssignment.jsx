@@ -17,8 +17,6 @@ const CreateAssignment = () => {
     const data = Object.fromEntries(formData);
     data.dueDate = dueDate.toLocaleDateString();
     data.email = user?.email;
-    console.log(data);
-
     // send data to server
     axiosSecure
       .post("/assignments", data)

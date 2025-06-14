@@ -10,7 +10,6 @@ const Register = () => {
   const Navigate = useNavigate();
   const { createUser, updateUser, user, setUser } = use(AuthContext);
 
-  console.log(user);
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,7 +17,6 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo_Url = form.photoUrl.value;
-    console.log(name, email, password);
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters");
       return;
@@ -37,12 +35,11 @@ const Register = () => {
           photoURL: photo_Url,
         })
           .then(() => {
-            setUser({ ...user, displayName: name, photoURL: photo_Url });
             toast.success("Register Successfully");
             Navigate(location.state || "/");
           })
           .catch((error) => {
-            // console.log(error);
+            console.log(error);
           });
       })
       .catch((error) => {
@@ -117,8 +114,6 @@ const Register = () => {
           <SocialLoginBtn title="Continue with Google"></SocialLoginBtn>
         </form>
       </div>
-      {/* <div className="">
-      </div> */}
     </div>
   );
 };
