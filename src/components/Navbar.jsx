@@ -160,9 +160,11 @@ const Navbar = () => {
         <div className="absolute hidden lg:block lg:right-108">
           <ThemeToggleBtn></ThemeToggleBtn>
         </div>
-        <div className="absolute hidden lg:block right-70 border-r-2 border-l-2 rounded-full px-4 py-1 hover:scale-105 cursor-pointer transition-all duration-300">
-          <NavLink to="/dashboard">Dashboard</NavLink>
-        </div>
+        {user && (
+          <div className="absolute hidden lg:block right-70 border-r-2 border-l-2 rounded-full px-4 py-1 hover:scale-105 cursor-pointer transition-all duration-300">
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </div>
+        )}
         <div>
           <div className="flex items-center md:gap-5 gap-4">
             {user && (

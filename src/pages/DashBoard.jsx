@@ -8,9 +8,14 @@ import { FaHome } from "react-icons/fa";
 import { CgMenuRound } from "react-icons/cg";
 import { Link } from "react-router";
 import ThemeToggleBtn from "../components/ThemeToggleBtn";
+import { motion } from "motion/react";
 const DashBoard = () => {
-  const { user } = use(AuthContext);
+  const { user, logoutUser } = use(AuthContext);
   const [assignments, setAssignments] = useState([]);
+  const [notes, setNotes] = useState("");
+
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     axiosSecure.get(`/submitedassignments?email=${user?.email}`).then((res) => {
       setAssignments(res.data);
@@ -20,11 +25,11 @@ const DashBoard = () => {
   const completed = assignments.filter((a) => a.status === "complete");
   const marks = completed.map((a) => a.marks);
   const mark = marks.reduce((a, b) => a + b, 0);
-  const avg = mark / completed.length;
-  console.log(avg);
+  const avg = completed.length ? mark / completed.length : 0;
+
   return (
-    <div className="w-11/12 min-h-[50vh] mx-auto mt-30 flex gap-5">
-      <div className="w-[30%] flex flex-col items-center">
+    <div className="w-11/12 min-h-[50vh] mx-auto lg:mt-30 md:mt-10 mt-5 flex flex-col lg:flex-row gap-5">
+      <div className="lg:w-[30%] flex flex-col items-center">
         <div className="h-[40vh] relative w-full rounded-2xl">
           <img
             src={flower}
@@ -39,21 +44,81 @@ const DashBoard = () => {
             </div>
           </div>
         </div>
-        <div className="w-full mt-8 flex gap-3 justify-between">
+        <div className="relative w-full mt-8 flex gap-5 md:gap-10 lg:gap-3 justify-between">
           <div className="w-fit gap-12 flex flex-col justify-center">
-            <CgMenuRound size={40}className="text-green-400" />
+            <CgMenuRound
+              onClick={() => setOpen(!open)}
+              size={40}
+              className={`cursor-pointer ${
+                open
+                  ? "-rotate-90 transition duration-500"
+                  : "transition duration-500"
+              }`}
+            />
             <Link to="/" className="text-zinc-400">
               <FaHome size={35} />
             </Link>
             <ThemeToggleBtn />
-            <IoMdLogOut size={40} color="red" />
+            <Link onClick={logoutUser} to="/login">
+              <IoMdLogOut size={35} color="red" />
+            </Link>
           </div>
-          <div className="border w-full rounded-xl">
-            
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute top-0 right-0 w-[85%] h-full transparent backdrop-blur-sm p-5"
+            >
+              <div className="flex flex-col justify-evenly h-full text-white">
+                <Link
+                  to="/create-assignment"
+                  className="bg-black hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-full w-fit"
+                >
+                  Create Assignment
+                </Link>
+                <Link
+                  to="/assignments"
+                  className="bg-black hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-full w-fit"
+                >
+                  All Assignments
+                </Link>
+                <Link
+                  to="/pending-assignments"
+                  className="bg-black hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-full w-fit"
+                >
+                  Review Assignments
+                </Link>
+                <Link
+                  to="/my-assignments"
+                  className="bg-black hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-full w-fit"
+                >
+                  My Attempted Assignments
+                </Link>
+              </div>
+            </motion.div>
+          )}
+          <div className="w-full rounded-xl">
+            <motion.div
+              className="bg-zinc-900 p-4 rounded-xl text-white shadow-md h-full w-full max-w-xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-xl font-bold mb-3 text-yellow-400">
+                📝 Task Notes
+              </h2>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Write your tasks, reminders or notes here..."
+                className="w-full h-32 p-3 bg-zinc-700 rounded-lg text-white placeholder-gray-400 outline-none resize-none focus:ring-2 focus:ring-yellow-400"
+              ></textarea>
+            </motion.div>
           </div>
         </div>
       </div>
-      <div className="border-2 border-base-300 w-[70%] rounded-2xl space-y-20 p-5">
+      <div className="border-2 border-base-300 lg:w-[70%] rounded-2xl space-y-20 p-5">
         <h2 className="text-3xl font-bold text-yellow-400">
           Assignment Overview
         </h2>
@@ -68,7 +133,7 @@ const DashBoard = () => {
             <h2 className="text-green-400 font-semibold">
               Completed Assignments
             </h2>
-            <div className="h-20 w-20 rounded-xl flex gap-6 justify-center items-center text-4xl font-bold">
+            <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
               <span>{completed.length}</span>
               <span className="text-green-400">
                 <IoCheckmarkDone />
@@ -77,7 +142,7 @@ const DashBoard = () => {
           </div>
           <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
             <h2 className="text-red-400 font-semibold">Pending Assignments</h2>
-            <div className="h-20 w-20 rounded-xl flex gap-6 justify-center items-center text-4xl font-bold">
+            <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
               <span>{pending.length}</span>
               <span>
                 <IoIosCloseCircleOutline color="red" />
