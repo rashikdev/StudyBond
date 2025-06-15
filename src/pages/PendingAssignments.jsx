@@ -1,14 +1,14 @@
 import React, { use, useEffect, useState } from "react";
-import { useLoaderData } from "react-router";
 import { motion } from "motion/react";
-import axiosSecure from "../utils/axiosSecure";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthProvider";
+import Spinner from "../components/Spinner";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 const PendingAssignments = () => {
-  const initialAssignments = useLoaderData();
-  const [assignments, setAssignments] = useState(initialAssignments);
+  const axiosSecure = useAxiosSecure();
+  const [assignments, setAssignments] = useState([]);
   const [open, setOpen] = useState(false);
-  const { user } = use(AuthContext);
+  const { user, loading } = use(AuthContext);
   const [singleAssignment, setSingleAssignment] = useState(null);
 
   const getSingleAssignment = (id) => {
@@ -21,7 +21,9 @@ const PendingAssignments = () => {
       setOpen(true);
     });
   };
-
+  if (loading) {
+    return <Spinner></Spinner>;
+  }
   const handleUpdate = (e, id) => {
     e.preventDefault();
     const form = e.target;
@@ -42,8 +44,12 @@ const PendingAssignments = () => {
       });
   };
   useEffect(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, []);
+    axiosSecure
+      .get(`/submitedassignments?status=pending`)
+      .then((res) => setAssignments(res.data));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <div className="md:w-11/12 min-h-[calc(100vh-250px)] mx-auto md:mt-30 mt-20">
       <div className="p-6 flex flex-col justify-center items-center gap-10">
@@ -89,7 +95,7 @@ const PendingAssignments = () => {
         </div>
         {/* table for mobile */}
         <div className="md:hidden space-y-4">
-          {initialAssignments.map((assignment, index) => (
+          {assignments.map((assignment, index) => (
             <div
               key={assignment._id}
               className="border border-green-300 rounded-xl p-3 space-y-3"
@@ -150,7 +156,9 @@ const PendingAssignments = () => {
                 </h3>
                 <h3 className="break-words">
                   <span className="font-bold text-yellow-500">Notes:</span>{" "}
-                  <span className="text-gray-400">{singleAssignment?.notes}</span>
+                  <span className="text-gray-400">
+                    {singleAssignment?.notes}
+                  </span>
                 </h3>
               </div>
               <form onSubmit={(e) => handleUpdate(e, singleAssignment?._id)}>

@@ -2,14 +2,15 @@ import React, { use, useEffect, useState } from "react";
 import AssignmentCard from "../components/AssignmentCard";
 import { useLoaderData } from "react-router";
 import { motion } from "motion/react";
-import axiosSecure from "../utils/axiosSecure";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Assignments = () => {
+  const axiosSecure = useAxiosSecure();
   const initialAssignments = useLoaderData();
   const [assignments, setAssignments] = useState(initialAssignments);
   const [open, setOpen] = useState(false);

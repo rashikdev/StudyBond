@@ -1,16 +1,26 @@
 import React, { use, useEffect, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 import { motion } from "motion/react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthProvider";
-import axiosSecure from "../utils/axiosSecure";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 const AssignmentDetails = () => {
-  const assignment = useLoaderData();
+  const { id } = useParams();
+  const axiosSecure = useAxiosSecure();
+  const [assignment, setAssignment] = useState({});
   const { thumbnail, title, description, difficulty, marks, dueDate, _id } =
     assignment;
   const navigate = useNavigate();
   const { user } = use(AuthContext);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    fetch(`https://study-bond-server.vercel.app/assignments/${id}`)
+      .then((res) => res.json())
+      .then((data) => setAssignment(data));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const getBadgeColor = () => {
     if (difficulty === "Easy") return "bg-green-200 text-green-800";
     if (difficulty === "Medium") return "bg-yellow-200 text-yellow-800";
@@ -43,9 +53,6 @@ const AssignmentDetails = () => {
       });
     navigate("/pending-assignments");
   };
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
   return (
     <motion.div
       initial={{ opacity: 0, y: 90 }}

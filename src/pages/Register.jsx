@@ -37,6 +37,7 @@ const Register = () => {
           .then(() => {
             toast.success("Register Successfully");
             Navigate(location.state || "/");
+            window.location.reload();
           })
           .catch((error) => {
             console.log(error);

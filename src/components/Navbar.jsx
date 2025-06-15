@@ -130,7 +130,9 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "border-b-2 border-green-400 rounded-full px-4 py-1" : ""
+                isActive
+                  ? "border-b-2 border-green-400 rounded-full px-4 py-1"
+                  : ""
               }
             >
               Home
@@ -138,7 +140,9 @@ const Navbar = () => {
             <NavLink
               to="/assignments"
               className={({ isActive }) =>
-                isActive ? "border-b-2 border-green-400 rounded-full px-4 py-1" : ""
+                isActive
+                  ? "border-b-2 border-green-400 rounded-full px-4 py-1"
+                  : ""
               }
             >
               Assignments
@@ -148,7 +152,9 @@ const Navbar = () => {
                 <NavLink
                   to="/pending-assignments"
                   className={({ isActive }) =>
-                    isActive ? "border-b-2 border-green-400 rounded-full px-4 py-1" : ""
+                    isActive
+                      ? "border-b-2 border-green-400 rounded-full px-4 py-1"
+                      : ""
                   }
                 >
                   Pending Assignments
@@ -161,9 +167,12 @@ const Navbar = () => {
           <ThemeToggleBtn></ThemeToggleBtn>
         </div>
         {user && (
-          <div className="absolute hidden lg:block right-70 border-r-2 border-l-2 rounded-full px-4 py-1 hover:scale-105 cursor-pointer transition-all duration-300">
-            <NavLink to="/dashboard">Dashboard</NavLink>
-          </div>
+          <NavLink
+            to="/dashboard"
+            className="absolute hidden lg:block right-70 border-r-2 border-l-2 rounded-full px-4 py-1 hover:scale-105 cursor-pointer transition-all duration-300"
+          >
+            Dashboard
+          </NavLink>
         )}
         <div>
           <div className="flex items-center md:gap-5 gap-4">

@@ -1,8 +1,9 @@
 import React, { use, useEffect, useState } from "react";
-import axiosSecure from "../utils/axiosSecure";
 import { AuthContext } from "../context/AuthProvider";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyAssignments = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = use(AuthContext);
   const [myAssignments, setMyAssignments] = useState([]);
 

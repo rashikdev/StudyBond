@@ -1,7 +1,6 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import flower from "../assets/flower.jpg";
-import axiosSecure from "../utils/axiosSecure";
 import { IoCheckmarkDone } from "react-icons/io5";
 import { IoIosCloseCircleOutline, IoMdLogOut } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
@@ -9,7 +8,9 @@ import { CgMenuRound } from "react-icons/cg";
 import { Link } from "react-router";
 import ThemeToggleBtn from "../components/ThemeToggleBtn";
 import { motion } from "motion/react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 const DashBoard = () => {
+  const axiosSecure = useAxiosSecure();
   const { user, logoutUser } = use(AuthContext);
   const [assignments, setAssignments] = useState([]);
   const [notes, setNotes] = useState("");

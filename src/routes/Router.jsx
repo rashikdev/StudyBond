@@ -6,7 +6,6 @@ import Login from "../pages/Login";
 import Assignments from "../pages/Assignments";
 import PrivateRoute from "./PrivateRoute";
 import AssignmentDetails from "../pages/AssignmentDetails";
-import axiosSecure from "../utils/axiosSecure";
 import CreateAssignment from "../pages/CreateAssignment";
 import Spinner from "../components/Spinner";
 import ErrorPage from "../components/ErrorPage";
@@ -46,9 +45,6 @@ export const Router = createBrowserRouter([
             <AssignmentDetails></AssignmentDetails>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          axiosSecure.get(`/assignments/${params.id}`).then((res) => res.data),
-        hydrateFallbackElement: <Spinner></Spinner>,
       },
       {
         path: "/create-assignment",
@@ -73,11 +69,6 @@ export const Router = createBrowserRouter([
             <PendingAssignments></PendingAssignments>
           </PrivateRoute>
         ),
-        loader: () =>
-          axiosSecure
-            .get(`/submitedassignments?status=pending`)
-            .then((res) => res.data),
-        hydrateFallbackElement: <Spinner></Spinner>,
       },
     ],
   },

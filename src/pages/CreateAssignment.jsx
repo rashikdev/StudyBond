@@ -2,11 +2,12 @@ import React, { use, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../context/AuthProvider";
-import axiosSecure from "../utils/axiosSecure";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { motion } from "motion/react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 const CreateAssignment = () => {
+  const axiosSecure = useAxiosSecure();
   const { user, loading } = use(AuthContext);
   const [dueDate, setDueDate] = useState(null);
   const navigate = useNavigate();
