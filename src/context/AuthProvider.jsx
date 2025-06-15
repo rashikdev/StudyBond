@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -48,6 +49,12 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if(user){
+      setLoading(false)
+    }
+  },[user])
   const authData = {
     user,
     loading,

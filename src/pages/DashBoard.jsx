@@ -37,7 +37,7 @@ const DashBoard = () => {
             alt=""
             className="w-full h-full object-cover rounded-2xl"
           />
-          <div className="w-[350px] h-[250px] backdrop-blur-sm flex items-center justify-evenly p-5 rounded-2xl text-white border-2 border-gray-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="w-[350px] h-[250px] backdrop-blur-sm flex items-center justify-evenly p-5 rounded-2xl text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <img src={user?.photoURL} alt="" className="rounded-xl w-[100px]" />
             <div>
               <h3 className="text-2xl font-semibold">{user?.displayName}</h3>
@@ -71,30 +71,46 @@ const DashBoard = () => {
               transition={{ duration: 0.5 }}
               className="absolute top-0 right-0 w-[85%] h-full transparent backdrop-blur-sm p-5"
             >
-              <div className="flex flex-col justify-evenly h-full text-white">
-                <Link
-                  to="/create-assignment"
-                  className="bg-black hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-full w-fit"
-                >
-                  Create Assignment
+              <div className="flex flex-col justify-evenly h-full text-white font-semibold">
+                <Link to="/create-assignment" className="w-fit">
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="bg-black hover:bg-[#2aae7a] hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-[0px_25px_0px_25px] w-fit cursor-pointer"
+                  >
+                    Create Assignment
+                  </motion.button>
                 </Link>
-                <Link
-                  to="/assignments"
-                  className="bg-black hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-full w-fit"
-                >
-                  All Assignments
+                <Link to="/assignments" className="w-fit">
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="bg-black hover:bg-[#2aae7a] hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-[0px_25px_0px_25px] w-fit cursor-pointer"
+                  >
+                    All Assignments
+                  </motion.button>
                 </Link>
-                <Link
-                  to="/pending-assignments"
-                  className="bg-black hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-full w-fit"
-                >
-                  Review Assignments
+                <Link to="/pending-assignments" className="w-fit">
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="bg-black hover:bg-[#2aae7a] hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-[0px_25px_0px_25px] w-fit cursor-pointer"
+                  >
+                    Review Assignments
+                  </motion.button>
                 </Link>
-                <Link
-                  to="/my-assignments"
-                  className="bg-black hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-full w-fit"
-                >
-                  My Attempted Assignments
+                <Link to="/my-assignments" className="w-fit">
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="bg-black hover:bg-[#2aae7a] hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-[0px_25px_0px_25px] w-fit cursor-pointer"
+                  >
+                    My Attempted Assignments
+                  </motion.button>
                 </Link>
               </div>
             </motion.div>

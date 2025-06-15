@@ -26,6 +26,14 @@ const Register = () => {
     } else if (!/[a-z]/.test(password)) {
       toast.error("Password must contain at least one lowercase letter");
       return;
+    } else if (!/\d/.test(password)) {
+      toast.error("Password must contain at least one number");
+      return;
+    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      toast.error(
+        "Password must contain at least one special character (e.g. @, #, $, !)"
+      );
+      return;
     }
 
     createUser(email, password)
@@ -37,7 +45,6 @@ const Register = () => {
           .then(() => {
             toast.success("Register Successfully");
             Navigate(location.state || "/");
-            window.location.reload();
           })
           .catch((error) => {
             console.log(error);

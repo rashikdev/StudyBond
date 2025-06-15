@@ -10,6 +10,7 @@ const PendingAssignments = () => {
   const [open, setOpen] = useState(false);
   const { user, loading } = use(AuthContext);
   const [singleAssignment, setSingleAssignment] = useState(null);
+  const [assignmentsLoading, setAssignmentsLoading] = useState(true);
 
   const getSingleAssignment = (id) => {
     axiosSecure.get(`/submitedassignments/${id}`).then((res) => {
@@ -44,11 +45,16 @@ const PendingAssignments = () => {
       });
   };
   useEffect(() => {
+    setAssignmentsLoading(true);
     axiosSecure
       .get(`/submitedassignments?status=pending`)
       .then((res) => setAssignments(res.data));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  setTimeout(() => {
+    setAssignmentsLoading(false);
+  }, 1000);
 
   return (
     <div className="md:w-11/12 min-h-[calc(100vh-250px)] mx-auto md:mt-30 mt-20">
@@ -63,63 +69,79 @@ const PendingAssignments = () => {
         </div>
         {/* table for md and above */}
         <div className="w-full hidden md:block">
-          <table className="table">
-            {/* head */}
-            <thead className="">
-              <tr className="text-xl">
-                <th>#</th>
-                <th>Assignment</th>
-                <th>Examinee</th>
-                <th>Marks</th>
-              </tr>
-            </thead>
-            <tbody>
-              {assignments.map((assignment, index) => (
-                <tr key={assignment._id}>
-                  <th>{index + 1}</th>
-                  <td>{assignment.title}</td>
-                  <td>{assignment.examinee}</td>
-                  <td>{assignment.marks}</td>
-                  <td className="flex justify-center">
-                    <button
-                      onClick={() => getSingleAssignment(assignment._id)}
-                      className="px-4 py-2 rounded-full cursor-pointer shadow-[0_0_20px_#0dac17b8] font-semibold bg-black text-white"
-                    >
-                      Give mark
-                    </button>
-                  </td>
+          {assignmentsLoading ? (
+            <div className="text-white text-4xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span className="loading loading-spinner text-green-500 w-12 h-12"></span>
+            </div>
+          ) : (
+            <table className="table">
+              {/* head */}
+              <thead className="">
+                <tr className="text-xl">
+                  <th>#</th>
+                  <th>Assignment</th>
+                  <th>Examinee</th>
+                  <th>Marks</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {assignments.map((assignment, index) => (
+                  <tr key={assignment._id}>
+                    <th>{index + 1}</th>
+                    <td>{assignment.title}</td>
+                    <td>{assignment.examinee}</td>
+                    <td>{assignment.marks}</td>
+                    <td className="flex justify-center">
+                      <button
+                        onClick={() => getSingleAssignment(assignment._id)}
+                        className="px-4 py-2 rounded-full cursor-pointer shadow-[0_0_20px_#0dac17b8] font-semibold bg-black text-white"
+                      >
+                        Give mark
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
         {/* table for mobile */}
         <div className="md:hidden space-y-4">
-          {assignments.map((assignment, index) => (
-            <div
-              key={assignment._id}
-              className="border border-green-300 rounded-xl p-3 space-y-3"
-            >
-              <p className="font-semibold">Assignment : {assignment.title}</p>
-              <p className="">
-                <span className="font-medium">Examinee:</span>{" "}
-                {assignment.examinee}
-              </p>
-
-              <div className="flex justify-between">
-                <p className="">
-                  <span className="font-medium">Total Marks:</span>{" "}
-                  {assignment.marks}
-                </p>
-                <button
-                  onClick={() => getSingleAssignment(assignment._id)}
-                  className="text-white px-2 py-[2px] rounded-lg cursor-pointer shadow-[0_0_20px_#0dac17b8] font-semibold bg-black"
-                >
-                  Give mark
-                </button>
-              </div>
+          {assignmentsLoading ? (
+            <div className="text-white text-4xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span className="loading loading-spinner text-green-500 w-12 h-12"></span>
             </div>
-          ))}
+          ) : (
+            <>
+              {assignments.map((assignment, index) => (
+                <div
+                  key={assignment._id}
+                  className="border border-green-300 rounded-xl p-3 space-y-3"
+                >
+                  <p className="font-semibold">
+                    Assignment : {assignment.title}
+                  </p>
+                  <p className="">
+                    <span className="font-medium">Examinee:</span>{" "}
+                    {assignment.examinee}
+                  </p>
+
+                  <div className="flex justify-between">
+                    <p className="">
+                      <span className="font-medium">Total Marks:</span>{" "}
+                      {assignment.marks}
+                    </p>
+                    <button
+                      onClick={() => getSingleAssignment(assignment._id)}
+                      className="text-white px-2 py-[2px] rounded-lg cursor-pointer shadow-[0_0_20px_#0dac17b8] font-semibold bg-black"
+                    >
+                      Give mark
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
         {open && (
           <motion.div
