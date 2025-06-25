@@ -4,7 +4,10 @@
 
 STUDY BOND is a collaborative online study platform designed to help students create, share, and review assignments together. The client-side app is built with React focusing on seamless navigation, secure authentication, and a user-friendly interface.
 
-> 🔗 Live Site: [https://study-bond-bd1de.web.app](https://study-bond-bd1de.web.app)
+![alt](https://i.postimg.cc/ZKXyDfx4/image.png)
+
+
+> 🔗 Live Site: [STUDY_BOND](https://study-bond-bd1de.web.app)
 
 ---
 
