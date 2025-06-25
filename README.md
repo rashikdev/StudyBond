@@ -30,11 +30,48 @@ STUDY BOND is a collaborative online study platform designed to help students cr
 - 📡 **axios** — HTTP client (if used)
 - 📅 **react-datepicker** — Date picker component (if used)
 
+---
+
+## 🚀 Install & Run Locally
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/rashikdev/study-bond-client.git
+cd study-bond-client
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Set up environment variables**
+
+Create a `.env` file in the root directory and add your Firebase & JWT environment variables like this:
+
+```env
+VITE_API_URL=https://your-server-url.com
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+# Add other Firebase and app config as needed
+```
+
+4. **Run the app**
+
+```bash
+npm run dev
+```
+
+Visit the app at `http://localhost:5173`
+
+---
 
 ## 👨‍💻 Author:
 **Rahsik**
 
-- GitHub: https://github.com/rashik218
+- GitHub: https://github.com/rashikdev
 - Twitter:  https://x.com/RashikKhan513
 - Email: mdrashikpdf@gmail.com
 ```
