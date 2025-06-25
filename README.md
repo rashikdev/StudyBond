@@ -1,4 +1,4 @@
-# STUDY BOND - Client Side (React)
+# STUDY BOND  (React)
 
 ## 🎯 Purpose
 
@@ -37,7 +37,7 @@ STUDY BOND is a collaborative online study platform designed to help students cr
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/rashikdev/study-bond-client.git
+https://github.com/rashikdev/StudyBond.git
 cd study-bond-client
 ```
 
