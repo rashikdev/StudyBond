@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { motion, scale } from "motion/react";
 import bgVideo from "../assets/bgvideo.mp4";
-import {
-  FaFacebook,
-  FaLinkedinIn,
-  FaTelegramPlane,
-  FaTwitter,
-} from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
 import { Link } from "react-router";
 import { TbArrowDownToArc } from "react-icons/tb";
@@ -14,19 +8,9 @@ import { TbArrowDownToArc } from "react-icons/tb";
 const Banner = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
   return (
     <div className="md:w-11/12 mx-auto pt-25">
-      <div className="relative h-[80vh] overflow-hidden md:rounded-2xl">
+      <div className="relative h-[60vh] md:h-[50vh] lg:h-[80vh] overflow-hidden md:rounded-2xl">
         {/* Loader */}
         {!videoLoaded && (
           <div className="flex items-center justify-center w-full h-[100vh] text-gray-900">
@@ -65,7 +49,7 @@ const Banner = () => {
         {/* Content Overlay */}
         <div className="absolute top-0 left-0 w-full h-full z-10 text-white">
           {/* Banner Text */}
-          <div className="absolute top-5 left-5 md:top-38 md:left-10 md:space-y-8 text-center md:text-left">
+          <div className="absolute top-5 left-5 md:top-18 md:left-10 md:space-y-8 text-center md:text-left">
             <motion.h1
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -95,75 +79,19 @@ const Banner = () => {
               initial={{ opacity: 0, y: 50, scale: 0 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1 }}
-              className="absolute bottom-60 md:bottom-90 lg:bottom-75 backdrop-blur-md md:p-4 p-2 shadow-[0_0_35px_#0dac17c3] rounded-[30px_0_30px_0px] cursor-pointer left-1/2 text-sm md:text-md transform -translate-x-1/2 text-green-400 font-semibold animate-pulse hover:text-white hover:bg-green-600"
+              className="absolute bottom-44 md:bottom-56 lg:bottom-75 backdrop-blur-md md:p-4 p-2 shadow-[0_0_35px_#0dac17c3] rounded-[30px_0_30px_0px] cursor-pointer left-1/2 text-sm md:text-md transform -translate-x-1/2 text-green-400 font-semibold animate-pulse hover:text-white hover:bg-green-600"
             >
               Get Started
             </motion.button>
           </Link>
-          <button
-            onClick={() => window.scrollTo({ top: 1045, behavior: "smooth" })}
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer"
-          >
-            <TbArrowDownToArc
-              size={30}
-              className="animate-bounce bg-blend-screen backdrop-blur-md text-[#196b11fb]"
-            />
+          <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer">
+            <a href="#features">
+              <TbArrowDownToArc
+                size={30}
+                className="animate-bounce bg-blend-screen backdrop-blur-md text-[#196b11fb]"
+              />
+            </a>
           </button>
-          {/* Social Icons */}
-          {/* <div className="absolute bottom-90 right-10 hidden md:flex">
-          <motion.ul
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            viewport={{ once: true }}
-            className="flex flex-col gap-4"
-          >
-            {[
-              FaLinkedinIn,
-              FaFacebook,
-              IoLogoInstagram,
-              FaTwitter,
-              FaTelegramPlane,
-            ].map((Icon, i) => (
-              <motion.a
-                key={i}
-                href="#"
-                variants={itemVariants}
-                className="bg-zinc-700 p-[6px] rounded-full border-[1.5px] border-[#37c386]"
-              >
-                <Icon size={22} />
-              </motion.a>
-            ))}
-          </motion.ul>
-        </div> */}
-          {/* Mobile Social Icons */}
-          {/* <div className="absolute bottom-5 left-2 md:hidden">
-          <h2 className="text-2xl mb-3 font-thin">Social Contact</h2>
-          <motion.ul
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            viewport={{ once: true }}
-            className="flex gap-3"
-          >
-            {[
-              FaLinkedinIn,
-              FaFacebook,
-              IoLogoInstagram,
-              FaTwitter,
-              FaTelegramPlane,
-            ].map((Icon, i) => (
-              <motion.a
-                key={i}
-                href="#"
-                variants={itemVariants}
-                className="bg-zinc-700 p-[6px] rounded-full"
-              >
-                <Icon size={14} />
-              </motion.a>
-            ))}
-          </motion.ul>
-        </div> */}
         </div>
       </div>
     </div>

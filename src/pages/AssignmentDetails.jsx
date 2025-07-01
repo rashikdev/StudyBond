@@ -67,7 +67,7 @@ const AssignmentDetails = () => {
           className="w-full h-64 object-cover rounded-lg mb-6"
         />
         <div className="flex items-center justify-between">
-          <h2 className="text-3xl font-bold mb-2">{title}</h2>
+          <h2 className="md:text-3xl text-lg font-bold mb-2">{title}</h2>
           <span
             className={`inline-block px-4 font-semibold py-1 rounded-full ${getBadgeColor()}`}
           >
