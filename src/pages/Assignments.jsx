@@ -8,12 +8,14 @@ import { AuthContext } from "../context/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { FaSearch } from "react-icons/fa";
 
 const Assignments = () => {
   const axiosSecure = useAxiosSecure();
   const initialAssignments = useLoaderData();
   const [assignments, setAssignments] = useState(initialAssignments);
   const [open, setOpen] = useState(false);
+  const [searchResults, setSearchResults] = useState(null);
 
   const [Id, setId] = useState(null);
   const [specificAssignment, setSpecificAssignment] = useState(null);
@@ -82,6 +84,11 @@ const Assignments = () => {
       const searchedAssignments = await axiosSecure.get(
         `/assignments?search=${searchTerm}`
       );
+      if (searchedAssignments.data.length === 0) {
+        setSearchResults("No Assignment found");
+      } else {
+        setSearchResults(null);
+      }
       setAssignments(searchedAssignments.data);
     } catch (err) {
       console.log(err);
@@ -101,7 +108,7 @@ const Assignments = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto mt-40 mb-10">
+    <div className="w-11/12 mx-auto mt-26 md:mt-40 mb-10">
       <div className="w-11/12 mx-auto mb-10 text-center">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
@@ -121,12 +128,15 @@ const Assignments = () => {
           tasks that challenge and grow your skills. Use the search box to find
           a specific one quickly.
         </motion.p>
-        <input
-          onChange={handleSearch}
-          type="search"
-          placeholder="Search by title ..."
-          className="w-full md:w-1/2 px-4 py-2 my-5 rounded-full outline-none shadow-[0_0_15px] bg-base-300"
-        />
+        <div className="w-full md:w-1/2 my-5 mx-auto relative">
+          <input
+            onChange={handleSearch}
+            type="search"
+            placeholder="Search by title..."
+            className="w-full pl-12 pr-4 py-3 rounded-full bg-base-200 placeholder-gray-500 shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+          <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm" />
+        </div>
       </div>
       <div className="flex justify-end items-center gap-2 mb-8">
         <h4 className="font-semibold text-xl">Filter :</h4>
@@ -141,7 +151,12 @@ const Assignments = () => {
           <option value="Hard">Hard</option>
         </select>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="relative min-h-[24vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        {searchResults && (
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <p className="text-red-500 ">{searchResults}</p>
+          </div>
+        )}
         {assignments.map((assignment) => (
           <AssignmentCard
             key={assignment._id}

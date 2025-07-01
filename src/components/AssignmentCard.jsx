@@ -35,26 +35,35 @@ const AssignmentCard = ({
       initial={{ opacity: 0, scale: 0.8, y: 50 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="bg-gray-800 text-white shadow-md rounded-2xl overflow-hidden"
+      className="bg-gray-800 text-white shadow-md rounded-2xl overflow-hidden min-h-[370px] flex flex-col"
     >
-      <img
-        src={thumbnail}
-        alt={title}
-        className="w-full max-h-60 object-cover hover:scale-105 transition duration-300"
-      />
-      <div className="p-4 space-y-2">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold">{title}</h3>
-          <span
-            className={`inline-block px-3 py-1 text-sm rounded-full ${getBadgeColor()}`}
-          >
-            {difficulty}
-          </span>
+      {/* Image */}
+      <div className="h-48 overflow-hidden">
+        <img
+          src={thumbnail}
+          alt={title}
+          className="w-full h-full object-cover hover:scale-105 transition duration-300"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col justify-between flex-1 p-4">
+        <div className="space-y-2">
+          <div className="flex items-start justify-between">
+            <h3 className="text-lg font-semibold line-clamp-2">{title}</h3>
+            <span
+              className={`inline-block px-3 py-1 text-sm rounded-full ${getBadgeColor()}`}
+            >
+              {difficulty}
+            </span>
+          </div>
+          <p className="text-sm">
+            Marks: <span className="font-medium">{marks}</span>
+          </p>
         </div>
-        <p className="text-sm">
-          Marks: <span className="font-medium">{marks}</span>
-        </p>
-        <div className="flex items-center justify-end gap-10">
+
+        {/* Buttons */}
+        <div className="flex items-center justify-end gap-6 mt-4">
           <button
             onClick={() => handleDelete(_id, assignment)}
             data-tip="Delete"

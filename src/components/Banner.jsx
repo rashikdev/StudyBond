@@ -95,7 +95,7 @@ const Banner = () => {
               initial={{ opacity: 0, y: 50, scale: 0 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1 }}
-              className="absolute bottom-54 md:bottom-58 lg:bottom-75 backdrop-blur-md md:p-4 p-2 shadow-[0_0_35px_#0dac17c3] rounded-[30px_0_30px_0px] cursor-pointer left-1/2 text-sm md:text-md transform -translate-x-1/2 text-green-400 font-semibold animate-pulse hover:text-white hover:bg-green-600"
+              className="absolute bottom-60 md:bottom-90 lg:bottom-75 backdrop-blur-md md:p-4 p-2 shadow-[0_0_35px_#0dac17c3] rounded-[30px_0_30px_0px] cursor-pointer left-1/2 text-sm md:text-md transform -translate-x-1/2 text-green-400 font-semibold animate-pulse hover:text-white hover:bg-green-600"
             >
               Get Started
             </motion.button>

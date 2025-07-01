@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full z-[999]">
-      <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full mt-5 relative mx-2 md:mx-0 backdrop-blur-md">
+      <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full mt-5 relative md:mx-0 backdrop-blur-md">
         <button
           onClick={() => {
             setOpen(!isOpen);
@@ -119,7 +119,7 @@ const Navbar = () => {
         )}
         <Link to="/">
           <h1
-            className={`md:text-2xl font-semibold uppercase md:-ml-30 lg:-ml-0`}
+            className={`md:text-2xl font-semibold uppercase -ml-10 md:-ml-40 lg:-ml-0`}
           >
             Study Bond
           </h1>

@@ -1,11 +1,10 @@
-# STUDY BOND  (React)
+# STUDY BOND (React)
 
 ## 🎯 Purpose
 
 STUDY BOND is a collaborative online study platform designed to help students create, share, and review assignments together. The client-side app is built with React focusing on seamless navigation, secure authentication, and a user-friendly interface.
 
 ![alt](https://i.postimg.cc/ZKXyDfx4/image.png)
-
 
 > 🔗 Live Site: [STUDY_BOND](https://study-bond-bd1de.web.app)
 
@@ -72,9 +71,13 @@ Visit the app at `http://localhost:5173`
 ---
 
 ## 👨‍💻 Author:
+
 **Rahsik**
 
 - GitHub: https://github.com/rashikdev
-- Twitter:  https://x.com/RashikKhan513
-- Email: mdrashikpdf@gmail.com
+- Twitter: https://x.com/RashikKhan513
+- Email: rashik.webdev@gmail.com
+
+```
+
 ```
