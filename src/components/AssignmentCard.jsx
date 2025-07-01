@@ -24,8 +24,8 @@ const AssignmentCard = ({
   };
 
   const handleModal = () => {
-    if (!assignment.email || assignment.email !== user?.email)
-      return toast.error("You are not authorized to update this assignment.");
+    // if (!assignment.email || assignment.email !== user?.email)
+    //   return toast.error("You are not authorized to update this assignment.");
     setOpen(true);
     handleGetIdAndAssignment(_id, assignment);
   };

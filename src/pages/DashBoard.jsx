@@ -24,7 +24,7 @@ const DashBoard = () => {
   }, []);
   const pending = assignments.filter((a) => a.status === "pending");
   const completed = assignments.filter((a) => a.status === "complete");
-  const marks = completed.map((a) => a.marks);
+  const marks = completed.map((a) => a.givenMark);
   const mark = marks.reduce((a, b) => a + b, 0);
   const avg = completed.length ? mark / completed.length : 0;
 
@@ -140,32 +140,49 @@ const DashBoard = () => {
           Assignment Overview
         </h2>
         <div className="flex justify-center items-center gap-6">
-          <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
-            <h2 className="font-semibold">Submitted Assignments</h2>
-            <div className="h-20 w-20 rounded-xl flex gap-6 justify-center items-center text-4xl font-bold">
-              <span>{assignments.length}</span>
+          <Link
+            to="/my-assignments"
+            className="hover:scale-95 transition duration-300"
+          >
+            <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+              <h2 className="font-semibold">Submitted Assignments</h2>
+              <div className="h-20 w-20 rounded-xl flex gap-6 justify-center items-center text-4xl font-bold">
+                <span>{assignments.length}</span>
+              </div>
             </div>
-          </div>
-          <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
-            <h2 className="text-green-400 font-semibold">
-              Completed Assignments
-            </h2>
-            <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
-              <span>{completed.length}</span>
-              <span className="text-green-400">
-                <IoCheckmarkDone />
-              </span>
+          </Link>
+          <Link
+            to="/my-assignments"
+            className="hover:scale-95 transition duration-300"
+          >
+            <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+              <h2 className="text-green-400 font-semibold">
+                Completed Assignments
+              </h2>
+              <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
+                <span>{completed.length}</span>
+                <span className="text-green-400">
+                  <IoCheckmarkDone />
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
-            <h2 className="text-red-400 font-semibold">Pending Assignments</h2>
-            <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
-              <span>{pending.length}</span>
-              <span>
-                <IoIosCloseCircleOutline color="red" />
-              </span>
+          </Link>
+          <Link
+            to="/my-assignments"
+            className="hover:scale-95 transition duration-300"
+          >
+            <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+              <h2 className="text-red-400 font-semibold">
+                Pending Assignments
+              </h2>
+              <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
+                <span>{pending.length}</span>
+                <span>
+                  <IoIosCloseCircleOutline color="red" />
+                </span>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
         <div className="flex flex-col gap-5 items-center">
           <div

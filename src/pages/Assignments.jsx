@@ -179,7 +179,7 @@ const Assignments = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-gray-700 w-[90vw] h-fit md:w-[55vw] rounded-2xl flex flex-col items-center justify-center gap-4 p-3 md:p-10"
+            className="fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 inset-0 bg-zinc-900 w-[90vw] h-fit md:w-[55vw] rounded-2xl flex flex-col items-center justify-center gap-4 p-3 md:p-10 text-white"
           >
             <div className="">
               <form onSubmit={handleUpdate} className="md:space-y-4">
@@ -196,7 +196,7 @@ const Assignments = () => {
                           title: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-3 md:py-4 my-3"
+                      className="w-full border border-gray-500 focus:outline-none rounded-lg px-4 py-3 md:py-4 my-3"
                       placeholder="Enter assignment title"
                       required
                     />
@@ -214,7 +214,7 @@ const Assignments = () => {
                           description: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-2 h-15 md:h-[56px] md:my-3"
+                      className="w-full border border-gray-500 focus:outline-none rounded-lg px-4 py-2 h-15 md:h-[56px] md:my-3"
                       placeholder="Enter assignment description"
                       required
                     />
@@ -233,7 +233,7 @@ const Assignments = () => {
                           marks: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-3 md:py-4 md:my-3"
+                      className="w-full border border-gray-500 focus:outline-none rounded-lg px-4 py-3 md:py-4 md:my-3"
                       placeholder="Enter total marks"
                       required
                     />
@@ -253,7 +253,7 @@ const Assignments = () => {
                           thumbnail: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-3 md:py-4 my-3"
+                      className="w-full border border-gray-500 focus:outline-none rounded-lg px-4 py-3 md:py-4 my-3"
                       placeholder="https://example.com/image.jpg"
                       required
                     />
@@ -274,7 +274,7 @@ const Assignments = () => {
                           difficulty: e.target.value,
                         }))
                       }
-                      className="w-full border rounded-lg px-4 py-3 md:py-4 my-3"
+                      className="w-full border border-gray-500 focus:outline-none rounded-lg px-4 py-3 md:py-4 my-3"
                       required
                     >
                       <option className="text-black" value="Easy">
@@ -307,7 +307,7 @@ const Assignments = () => {
                           }))
                         }
                         placeholderText="Select due date"
-                        className="w-full border rounded-lg px-4 py-3 md:py-4"
+                        className="w-full border border-gray-500 focus:outline-none rounded-lg px-4 py-3 md:py-4"
                         wrapperClassName="w-full"
                         required
                       />

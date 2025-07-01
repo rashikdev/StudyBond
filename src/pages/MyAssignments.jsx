@@ -1,17 +1,25 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Spinner from "../components/Spinner";
 
 const MyAssignments = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = use(AuthContext);
   const [myAssignments, setMyAssignments] = useState([]);
+  const [assignmentsLoading, setAssignmentsLoading] = useState(true);
 
   useEffect(() => {
+    setAssignmentsLoading(true);
     axiosSecure.get(`/submitedassignments?email=${user?.email}`).then((res) => {
       setMyAssignments(res.data);
+      setAssignmentsLoading(false);
     });
   }, []);
+
+  if (assignmentsLoading) {
+    return <Spinner></Spinner>;
+  }
 
   return (
     <div className="w-11/12 mx-auto mt-30 min-h-[55vh]">

@@ -58,16 +58,16 @@ const AssignmentDetails = () => {
       initial={{ opacity: 0, y: 90 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="max-w-4xl mx-auto px-4 py-10 md:mt-30 mt-16 mb-5 text-white"
+      className="max-w-4xl mx-auto px-4 py-10 md:mt-30 mt-16 mb-5"
     >
-      <div className="bg-gray-900 shadow-lg rounded-2xl p-6">
+      <div className="bg-gray-800 rounded-2xl p-6">
         <img
           src={thumbnail}
           alt={title}
           className="w-full h-64 object-cover rounded-lg mb-6"
         />
         <div className="flex items-center justify-between">
-          <h2 className="md:text-3xl text-lg font-bold mb-2">{title}</h2>
+          <h2 className="md:text-3xl text-lg font-bold mb-2 text-white">{title}</h2>
           <span
             className={`inline-block px-4 font-semibold py-1 rounded-full ${getBadgeColor()}`}
           >
@@ -77,7 +77,7 @@ const AssignmentDetails = () => {
         <p className="mb-4 text-gray-400">{description}</p>
 
         <div className="flex items-center justify-between mb-6">
-          <span className="text-sm">
+          <span className="text-sm text-white">
             Due Date: <strong className="text-yellow-400">{dueDate}</strong>
           </span>
           <span className="text-sm">
@@ -86,7 +86,7 @@ const AssignmentDetails = () => {
         </div>
         <button
           onClick={() => setOpen(true)}
-          className="w-full text-white text-lg font-semibold py-2 rounded-full cursor-pointer bg-black shadow-[0_0px_10px_0px_white] hover:bg-gray-800 transition duration-300 ease-in-out"
+          className="w-full text-lg font-semibold py-2 rounded-full cursor-pointer bg-base-100 placeholder-gray-500 shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
         >
           Take Assignment
         </button>

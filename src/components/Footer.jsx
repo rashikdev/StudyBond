@@ -1,4 +1,6 @@
 import { FaFacebookF, FaTwitter, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
 import { Link } from "react-router";
 
 const Footer = () => {
@@ -55,27 +57,31 @@ const Footer = () => {
 
           <div className="flex items-center space-x-4 mt-3">
             <a
-              href="#"
-              aria-label="Facebook"
-              className="text-xl hover:text-blue-600 hover:scale-110 transition"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="#"
-              aria-label="Twitter"
-              className="text-xl hover:text-sky-500 hover:scale-110 transition"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="#"
+              target="_blank"
+              href="https://github.com/rashikdev"
               aria-label="GitHub"
               className="text-xl hover:text-gray-500 hover:scale-110 transition"
             >
               <FaGithub />
             </a>
             <a
+              target="_blank"
+              href="https://www.facebook.com/share/16Fjh4kbAR/"
+              aria-label="Facebook"
+              className="text-xl hover:text-blue-600 hover:scale-110 transition"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              target="_blank"
+              href="https://x.com/RashikKhan513"
+              aria-label="Twitter"
+              className="text-xl hover:text-sky-500 hover:scale-110 transition"
+            >
+              <FaXTwitter />
+            </a>
+            <a
+              target="_blank"
               href="#"
               aria-label="LinkedIn"
               className="text-xl hover:text-blue-500 hover:scale-110 transition"
