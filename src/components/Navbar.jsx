@@ -11,6 +11,27 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const [show, setShow] = useState(false);
 
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) {
+      // scrolling down
+      setShowNavbar(false);
+    } else {
+      // scrolling up
+      setShowNavbar(true);
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
+
   const handleLogout = () => {
     logoutUser()
       .then(() => {
@@ -31,7 +52,11 @@ const Navbar = () => {
   }, [show]);
 
   return (
-    <div className="fixed top-0 left-0 w-full z-[999]">
+    <div
+      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full mt-5 relative md:mx-0 backdrop-blur-md">
         <button
           onClick={() => {

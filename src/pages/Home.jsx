@@ -12,9 +12,9 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <FeatureSection></FeatureSection>
-      <FaqSection></FaqSection>
-        <RulesSection></RulesSection>
+      <RulesSection></RulesSection>
       <Testimonials></Testimonials>
+      <FaqSection></FaqSection>
     </div>
   );
 };

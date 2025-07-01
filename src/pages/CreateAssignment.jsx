@@ -48,7 +48,7 @@ const CreateAssignment = () => {
       className="mt-34 mb-20 lg:w-9/12 mx-auto p-6 md:p-10 rounded-xl bg-zinc-900 text-white"
     >
       <h2 className="text-2xl font-semibold mb-10 text-center">
-        Create an Assignment
+        Create An Assignment
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4 ">
         <div className="flex flex-col gap-2 md:flex-row md:space-x-4">

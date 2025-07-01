@@ -25,7 +25,7 @@ const MyAssignments = () => {
     <div className="w-11/12 mx-auto mt-30 min-h-[55vh]">
       <div>
         <div className="p-4 max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold my-10">My Submitted Assignments</h2>
+          <h2 className="text-2xl font-bold my-10 text-green-500">My Submitted Assignments</h2>
           {myAssignments.length === 0 ? (
             <p className="text-gray-500 text-center pt-30 rounded-xl ">
               You have not submitted any assignments yet.

@@ -32,7 +32,7 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <section className="w-10/12 mx-auto lg:py-30">
-      <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-center mb-20 bg-gradient-to-bl to-green-500 from-green-800 bg-clip-text text-transparent">
+      <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-center mb-20 text-green-500">
         <span className="inline-block">
           <MdOutlineMessage color="green" />
         </span>{" "}

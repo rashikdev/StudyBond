@@ -6,6 +6,7 @@ import {
   FaUserShield,
   FaRegGrinStars,
 } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const RulesSection = () => {
   const rules = [
@@ -41,31 +42,50 @@ const RulesSection = () => {
     },
   ];
 
+  const containerVariant = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.5,
+      },
+    },
+  };
+
+  const itemVariant = {
+    hidden: { opacity: 0, x: 100 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
-    <section className="py-16" id="rules">
-      <h2 className="text-center text-xl font-semibold text-gray-500 mb-5">
-        Still interested? Just follow these simple rules!
-      </h2>
+    <motion.section
+      variants={containerVariant}
+      initial="hidden"
+      whileInView="visible"
+      className="py-16"
+      id="rules"
+    >
       <div className="w-10/12 mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 bg-gradient-to-bl to-green-500 from-green-800 bg-clip-text text-transparent">
+        <h2 className="text-3xl md:text-3xl font-bold text-center mb-20 text-green-500">
           STUDYBOND Community Rules
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {rules.map((rule, index) => (
-            <div
+            <motion.div
+              variants={itemVariant}
               key={index}
-              className="border-l-2 border-green-500 rounded-2xl p-6 shadow-md hover:shadow-lg transition duration-300"
+              className="border-l-2 border-green-500 rounded-2xl p-6 shadow-md hover:shadow-lg"
             >
               <div className="flex items-center gap-4 mb-3">
                 <div className="text-3xl">{rule.icon}</div>
                 <h3 className="text-xl font-semibold">{rule.title}</h3>
               </div>
               <p className="text-gray-500">{rule.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
