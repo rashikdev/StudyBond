@@ -62,7 +62,7 @@ const RulesSection = () => {
       variants={containerVariant}
       initial="hidden"
       whileInView="visible"
-      className="py-16"
+      className="py-16 overflow-hidden"
       id="rules"
     >
       <div className="w-10/12 mx-auto px-4">

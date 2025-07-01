@@ -12,6 +12,7 @@ import ErrorPage from "../components/ErrorPage";
 import PendingAssignments from "../pages/PendingAssignments";
 import MyAssignments from "../pages/MyAssignments";
 import DashBoard from "../pages/DashBoard";
+import AboutSection from "../pages/AboutSection";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ export const Router = createBrowserRouter([
       {
         path: "login",
         Component: Login,
+      },
+      {
+        path: "about",
+        Component: AboutSection,
       },
       {
         path: "/assignments",

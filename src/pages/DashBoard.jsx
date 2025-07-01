@@ -72,12 +72,13 @@ const DashBoard = () => {
               className="absolute top-0 right-0 w-[85%] h-full transparent backdrop-blur-sm p-5"
             >
               <div className="flex flex-col justify-evenly h-full text-white font-semibold">
+                <button></button>
                 <Link to="/create-assignment" className="w-fit">
                   <motion.button
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 border-[] w-fit cursor-pointer"
+                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 w-fit cursor-pointer"
                   >
                     Create Assignment
                   </motion.button>
@@ -87,7 +88,7 @@ const DashBoard = () => {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 border-[] w-fit cursor-pointer"
+                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 w-fit cursor-pointer"
                   >
                     All Assignments
                   </motion.button>
@@ -97,7 +98,7 @@ const DashBoard = () => {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 border-[] w-fit cursor-pointer"
+                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 w-fit cursor-pointer"
                   >
                     Review Assignments
                   </motion.button>
@@ -107,7 +108,7 @@ const DashBoard = () => {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 border-[] w-fit cursor-pointer"
+                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 w-fit cursor-pointer"
                   >
                     My Attempted Assignments
                   </motion.button>
@@ -139,66 +140,68 @@ const DashBoard = () => {
         <h2 className="text-3xl font-bold text-yellow-400">
           Assignment Overview
         </h2>
-        <div className="flex justify-center items-center gap-6">
-          <Link
-            to="/my-assignments"
-            className="hover:scale-95 transition duration-300"
-          >
-            <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
-              <h2 className="font-semibold">Submitted Assignments</h2>
-              <div className="h-20 w-20 rounded-xl flex gap-6 justify-center items-center text-4xl font-bold">
-                <span>{assignments.length}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:gap-20">
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-6">
+            <Link
+              to="/my-assignments"
+              className="hover:scale-95 transition duration-300"
+            >
+              <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+                <h2 className="font-semibold">Submitted Assignments</h2>
+                <div className="h-20 w-20 rounded-xl flex gap-6 justify-center items-center text-4xl font-bold">
+                  <span>{assignments.length}</span>
+                </div>
               </div>
-            </div>
-          </Link>
-          <Link
-            to="/my-assignments"
-            className="hover:scale-95 transition duration-300"
-          >
-            <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
-              <h2 className="text-green-400 font-semibold">
-                Completed Assignments
-              </h2>
-              <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
-                <span>{completed.length}</span>
-                <span className="text-green-400">
-                  <IoCheckmarkDone />
-                </span>
+            </Link>
+            <Link
+              to="/my-assignments"
+              className="hover:scale-95 transition duration-300"
+            >
+              <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+                <h2 className="text-green-400 font-semibold">
+                  Completed Assignments
+                </h2>
+                <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
+                  <span>{completed.length}</span>
+                  <span className="text-green-400">
+                    <IoCheckmarkDone />
+                  </span>
+                </div>
               </div>
-            </div>
-          </Link>
-          <Link
-            to="/my-assignments"
-            className="hover:scale-95 transition duration-300"
-          >
-            <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
-              <h2 className="text-red-400 font-semibold">
-                Pending Assignments
-              </h2>
-              <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
-                <span>{pending.length}</span>
-                <span>
-                  <IoIosCloseCircleOutline color="red" />
-                </span>
+            </Link>
+            <Link
+              to="/my-assignments"
+              className="hover:scale-95 transition duration-300"
+            >
+              <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+                <h2 className="text-red-400 font-semibold">
+                  Pending Assignments
+                </h2>
+                <div className="h-20 w-20 rounded-xl flex gap-4 md:gap-6 justify-center items-center text-4xl font-bold">
+                  <span>{pending.length}</span>
+                  <span>
+                    <IoIosCloseCircleOutline color="red" />
+                  </span>
+                </div>
               </div>
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col gap-5 items-center">
-          <div
-            className="radial-progress text-2xl font-bold text-green-400"
-            style={{
-              "--value": avg,
-              "--size": "12rem",
-              "--thickness": "1.5rem",
-            }}
-            aria-valuenow={avg}
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            {avg}%
+            </Link>
           </div>
-          <h2 className="font-bold text-gray-500">Average Marks</h2>
+          <div className="flex flex-col gap-5 items-center">
+            <div
+              className="radial-progress text-2xl font-bold text-green-400"
+              style={{
+                "--value": avg,
+                "--size": "12rem",
+                "--thickness": "1.5rem",
+              }}
+              aria-valuenow={avg}
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              {avg}%
+            </div>
+            <h2 className="font-bold text-gray-500">Average Marks</h2>
+          </div>
         </div>
       </div>
     </div>

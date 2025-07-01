@@ -22,7 +22,7 @@ const MyAssignments = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto mt-30 min-h-[55vh]">
+    <div className="w-11/12 mx-auto mt-30 min-h-[60vh]">
       <div>
         <div className="p-4 max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold my-10 text-green-500">My Submitted Assignments</h2>

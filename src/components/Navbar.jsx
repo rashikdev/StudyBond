@@ -71,7 +71,7 @@ const Navbar = () => {
             initial={{ x: "-100%", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-50 py-3 rounded-r-4xl bg-black/50 absolute -left-2 top-20 z-50 text-white flex justify-center items-center"
+            className="w-50 py-3 rounded-r-4xl bg-black/80 absolute -left-2 top-20 z-50 text-white flex pl-8  items-center"
           >
             <ul className="flex flex-col gap-5 text-[16px]">
               <NavLink
@@ -106,7 +106,7 @@ const Navbar = () => {
                 <>
                   <NavLink
                     toggle={setOpen}
-                    to="/pending-assignments"
+                    to="/about"
                     onClick={() => setOpen(false)}
                     className={({ isActive }) => (isActive ? "" : "")}
                   >
@@ -115,7 +115,7 @@ const Navbar = () => {
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      Pending Assignments
+                      About
                     </motion.li>
                   </NavLink>
                   <NavLink
@@ -171,20 +171,16 @@ const Navbar = () => {
             >
               Assignments
             </NavLink>
-            {user && (
-              <>
-                <NavLink
-                  to="/pending-assignments"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "border-b-2 border-green-400 rounded-full px-4 py-1"
-                      : ""
-                  }
-                >
-                  Pending Assignments
-                </NavLink>
-              </>
-            )}
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive
+                  ? "border-b-2 border-green-400 rounded-full px-4 py-1"
+                  : ""
+              }
+            >
+              About Us
+            </NavLink>
           </ul>
         </div>
         <div className="absolute hidden lg:block lg:right-108">
@@ -235,7 +231,7 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0, y: -200 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute right-0 top-20 px-4 py-8 bg-gray-700/55 rounded-lg text-white"
+            className="absolute right-0 top-20 px-4 py-8 bg-black/70 rounded-lg text-white"
           >
             <ul className="flex flex-col gap-3 font-semibold overflow-hidden">
               <Link to="/create-assignment" onClick={() => setShow(false)}>
