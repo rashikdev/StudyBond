@@ -30,7 +30,6 @@ const Navbar = () => {
     }
   }, [show]);
 
-  // const theme = document.documentElement.getAttribute("data-theme") !== "black";
   return (
     <div className="fixed top-0 left-0 w-full z-[999]">
       <div className="flex justify-between items-center md:py-3 py-1 md:px-7 px-4 rounded-full mt-5 relative mx-2 md:mx-0 backdrop-blur-md">

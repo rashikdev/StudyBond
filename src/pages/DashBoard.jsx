@@ -66,7 +66,7 @@ const DashBoard = () => {
           </div>
           {open && (
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               className="absolute top-0 right-0 w-[85%] h-full transparent backdrop-blur-sm p-5"
@@ -74,40 +74,40 @@ const DashBoard = () => {
               <div className="flex flex-col justify-evenly h-full text-white font-semibold">
                 <Link to="/create-assignment" className="w-fit">
                   <motion.button
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="bg-black hover:bg-[#2aae7a] hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-[0px_25px_0px_25px] w-fit cursor-pointer"
+                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 border-[] w-fit cursor-pointer"
                   >
                     Create Assignment
                   </motion.button>
                 </Link>
                 <Link to="/assignments" className="w-fit">
                   <motion.button
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="bg-black hover:bg-[#2aae7a] hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-[0px_25px_0px_25px] w-fit cursor-pointer"
+                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 border-[] w-fit cursor-pointer"
                   >
                     All Assignments
                   </motion.button>
                 </Link>
                 <Link to="/pending-assignments" className="w-fit">
                   <motion.button
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="bg-black hover:bg-[#2aae7a] hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-[0px_25px_0px_25px] w-fit cursor-pointer"
+                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 border-[] w-fit cursor-pointer"
                   >
                     Review Assignments
                   </motion.button>
                 </Link>
                 <Link to="/my-assignments" className="w-fit">
                   <motion.button
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="bg-black hover:bg-[#2aae7a] hover:shadow-[0px_0px_20px_0px_white] px-3 py-1 rounded-[0px_25px_0px_25px] w-fit cursor-pointer"
+                    className="rounded-md  decoration-[red] hover:underline hover:text-[red] underline-offset-4 px-3  border-l-2 border-[] w-fit cursor-pointer"
                   >
                     My Attempted Assignments
                   </motion.button>
