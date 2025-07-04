@@ -1,4 +1,4 @@
-# STUDY BOND (React)
+# STUDY BOND (Client)
 
 ## 🎯 Purpose
 
