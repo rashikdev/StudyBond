@@ -61,32 +61,39 @@ const DashBoard = () => {
         </div>
         <div className="relative w-full mt-8 flex gap-5 md:gap-10 lg:gap-3 justify-between">
           <div className="w-fit gap-12 flex flex-col justify-center">
-            <CgMenuRound
-              onClick={() => setOpen(!open)}
-              size={40}
-              className={`cursor-pointer ${
-                open
-                  ? "-rotate-90 transition duration-500"
-                  : "transition duration-500"
-              }`}
-            />
-            <Link to="/" className="text-zinc-400">
+            <button data-tip="Menu" className="md:tooltip">
+              <CgMenuRound
+                onClick={() => setOpen(!open)}
+                size={40}
+                className={`cursor-pointer hover:text-green-500 ${
+                  open
+                    ? "-rotate-90 transition duration-500 text-green-500"
+                    : "transition duration-500"
+                }`}
+              />
+            </button>
+            <Link
+              data-tip="Home"
+              to="/"
+              className="md:tooltip text-zinc-400 hover:text-green-500"
+            >
               <FaHome size={35} />
             </Link>
-            <ThemeToggleBtn />
+            <button data-tip="Change Theme" className="md:tooltip">
+              <ThemeToggleBtn />
+            </button>
             <Link onClick={logoutUser} to="/login">
               <IoMdLogOut size={35} color="red" />
             </Link>
           </div>
           {open && (
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 80 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="absolute top-0 right-0 w-[85%] h-full transparent backdrop-blur-sm p-5"
+              className="absolute top-0 right-0 w-[87%] rounded-2xl h-full transparent backdrop-blur-2xl p-5"
             >
               <div className="flex flex-col justify-evenly h-full text-white font-semibold">
-                <button></button>
                 <Link to="/create-assignment" className="w-fit">
                   <motion.button
                     initial={{ opacity: 0, x: 50 }}
