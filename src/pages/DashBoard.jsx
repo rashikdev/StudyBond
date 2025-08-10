@@ -174,18 +174,28 @@ const DashBoard = () => {
               to="/my-assignments"
               className="hover:scale-95 transition duration-300"
             >
-              <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2"
+              >
                 <h2 className="font-semibold">Submitted Assignments</h2>
                 <div className="h-20 w-20 rounded-xl flex gap-6 justify-center items-center text-4xl font-bold">
                   <span>{assignments.length}</span>
                 </div>
-              </div>
+              </motion.div>
             </Link>
             <Link
               to="/my-assignments"
               className="hover:scale-95 transition duration-300"
             >
-              <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2"
+              >
                 <h2 className="text-green-400 font-semibold">
                   Completed Assignments
                 </h2>
@@ -195,13 +205,18 @@ const DashBoard = () => {
                     <IoCheckmarkDone />
                   </span>
                 </div>
-              </div>
+              </motion.div>
             </Link>
             <Link
               to="/my-assignments"
               className="hover:scale-95 transition duration-300"
             >
-              <div className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="border-2 w-70 h-40 flex flex-col justify-evenly items-center rounded-2xl border-green-700 p-2"
+              >
                 <h2 className="text-red-400 font-semibold">
                   Pending Assignments
                 </h2>
@@ -211,7 +226,7 @@ const DashBoard = () => {
                     <IoIosCloseCircleOutline color="red" />
                   </span>
                 </div>
-              </div>
+              </motion.div>
             </Link>
           </div>
           <div className="flex flex-col gap-5 items-center">
