@@ -22,10 +22,10 @@ const FeatureSection = () => {
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500"
+              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500 group"
             >
-              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:h-48 md:w-70 p-4 text-white">
-                <CgGoogleTasks className="text-4xl text-green-400 shadow-[0px_0px_20px_0px_white] rounded-full" />
+              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:full md:w-70 px-4 py-8 text-white">
+                <CgGoogleTasks className="text-4xl text-green-400 shadow-[0px_0px_20px_0px_white] rounded-full group-hover:scale-105 group-hover:animate-pulse transition duration-500 my-4" />
                 <h2 className="text-lg font-bold">Create Assignments Easily</h2>
                 <p className="text-gray-400">
                   Share assignments with all registered users in just a few
@@ -37,10 +37,10 @@ const FeatureSection = () => {
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500"
+              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500 group"
             >
-              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:h-48 md:w-70 p-4 text-white">
-                <IoSearchCircleOutline className="text-4xl text-orange-500 shadow-[0px_0px_20px_0px_white] rounded-full" />
+              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:full md:w-70 px-4 py-8 text-white">
+                <IoSearchCircleOutline className="text-4xl text-orange-500 shadow-[0px_0px_20px_0px_white] rounded-full group-hover:scale-105 group-hover:animate-pulse transition duration-500 my-4" />
                 <h2 className="text-lg font-bold">
                   Filter & Search Assignments
                 </h2>
@@ -56,10 +56,10 @@ const FeatureSection = () => {
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500"
+              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500 group"
             >
-              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:h-48 md:w-70 p-4 text-white">
-                <FaUsers className="text-4xl text-green-500 shadow-[0px_0px_20px_0px_white] rounded-full p-1" />
+              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:full md:w-70 px-4 py-8 text-white">
+                <FaUsers className="text-4xl text-green-500 shadow-[0px_0px_20px_0px_white] rounded-full p-1 group-hover:scale-105 group-hover:animate-pulse transition duration-500 my-4" />
                 <h2 className="text-lg font-bold">Peer Grading System</h2>
                 <p className="text-gray-400">
                   Evaluate and give feedback to your friends' assignments to
@@ -73,10 +73,10 @@ const FeatureSection = () => {
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500"
+              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500 group"
             >
-              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:h-48 md:w-70 p-4 text-white">
-                <FaChartLine className="text-4xl text-blue-500 shadow-[0px_0px_20px_0px_white] rounded-full p-1" />
+              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:full md:w-70 px-4 py-8 text-white">
+                <FaChartLine className="text-4xl text-blue-500 shadow-[0px_0px_20px_0px_white] rounded-full p-1 group-hover:scale-105 group-hover:animate-pulse transition duration-500 my-4" />
                 <h2 className="text-lg font-bold">Track Progress</h2>
                 <p className="text-gray-400">
                   See your submission history, grades, and feedback at a glance.
@@ -87,10 +87,10 @@ const FeatureSection = () => {
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500"
+              className="p-[2px] rounded-2xl bg-gradient-to-tr from-[#0f172a] via-green-700 to-emerald-400 hover:from-green-600 hover:to-emerald-500 group"
             >
-              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:h-48 md:w-70 p-4 text-white">
-                <BsShieldLockFill className="text-4xl text-red-500 shadow-[0px_0px_20px_0px_white] rounded-full p-1" />
+              <div className="bg-black rounded-2xl flex flex-col justify-center items-center gap-2 text-center md:full md:w-70 px-4 md:py-5 py-8 text-white">
+                <BsShieldLockFill className="text-4xl text-red-500 shadow-[0px_0px_20px_0px_white] rounded-full p-1 group-hover:scale-105 group-hover:animate-pulse my-4 transition duration-300" />
                 <h2 className="text-lg font-bold">Secure & Private</h2>
                 <p className="text-gray-400">
                   Data is protected using Firebase Auth and JWT. Only you
