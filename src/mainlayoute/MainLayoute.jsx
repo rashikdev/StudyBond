@@ -6,7 +6,7 @@ import ScrollBtn from "../components/ScrollBtn";
 
 const MainLayoute = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar></Navbar>
       <ScrollBtn></ScrollBtn>
       <Outlet />
