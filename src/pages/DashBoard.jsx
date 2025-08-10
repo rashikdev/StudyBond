@@ -9,11 +9,13 @@ import { Link } from "react-router";
 import ThemeToggleBtn from "../components/ThemeToggleBtn";
 import { motion } from "motion/react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 const DashBoard = () => {
   const axiosSecure = useAxiosSecure();
   const { user, logoutUser } = use(AuthContext);
   const [assignments, setAssignments] = useState([]);
-  const [notes, setNotes] = useState("");
+  const [notes, setNotes] = useState(localStorage.getItem("notes") || "");
+  const [saving, setSaving] = useState(false);
 
   const [open, setOpen] = useState(false);
 
@@ -27,6 +29,18 @@ const DashBoard = () => {
   const marks = completed.map((a) => a.givenMark);
   const mark = marks.reduce((a, b) => a + b, 0);
   const avg = completed.length ? mark / completed.length : 0;
+
+  const handleSaveNote = () => {
+    if (!notes) {
+      return toast.error("Please write something");
+    }
+    setSaving(true);
+    setTimeout(() => {
+      setSaving(false);
+      toast.success("Notes saved successfully");
+    }, 1000);
+    localStorage.setItem("notes", notes);
+  };
 
   return (
     <div className="w-11/12 min-h-[50vh] mx-auto lg:mt-30 md:mt-10 mt-5 flex flex-col lg:flex-row gap-5">
@@ -130,8 +144,15 @@ const DashBoard = () => {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Write your tasks, reminders or notes here..."
-                className="w-full h-32 p-3 bg-zinc-700 rounded-lg text-white placeholder-gray-400 outline-none resize-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full h-32 p-3 bg-zinc-800 rounded-lg text-green-400 placeholder-gray-400 outline-none resize-none focus:ring-2 focus:ring-yellow-400 text-xl"
               ></textarea>
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={handleSaveNote}
+                className="mt-5 px-4 py-[5px] bg-white text-black rounded-md w-full font-semibold text-xl hover:bg-yellow-400 cursor-pointer"
+              >
+                {saving ? "Saving..." : "Save Note"}
+              </motion.button>
             </motion.div>
           </div>
         </div>
