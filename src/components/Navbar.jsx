@@ -228,28 +228,35 @@ const Navbar = () => {
         </div>
         {show && (
           <motion.div
-            initial={{ opacity: 0, scale: 0, y: -200 }}
+            initial={{ opacity: 0, scale: 0.8, y: -30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute right-0 top-20 px-4 py-8 bg-black/70 rounded-lg text-white"
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="absolute right-0 top-20 px-4 py-6 
+            rounded-lg shadow-lg border border-gray-300/20 
+          bg-white/70 dark:bg-black/70 
+            backdrop-blur-md text-gray-800 dark:text-white"
           >
-            <ul className="flex flex-col gap-3 font-semibold overflow-hidden">
+            <ul className="flex flex-col gap-2 font-semibold">
               <Link to="/create-assignment" onClick={() => setShow(false)}>
                 <motion.li
-                  initial={{ opacity: 0, scale: 0, x: -200 }}
-                  animate={{ opacity: 1, scale: 1, x: 0 }}
-                  transition={{ duration: 0.9, delay: 0.1 }}
-                  className="cursor-pointer hover:bg-gray-400 rounded-md px-2"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                  className="cursor-pointer px-3 py-2 rounded-md
+                  hover:bg-gray-200 dark:hover:bg-gray-600
+                  transition-colors"
                 >
                   Create Assignment
                 </motion.li>
               </Link>
               <Link to="/my-assignments" onClick={() => setShow(false)}>
                 <motion.li
-                  initial={{ opacity: 0, x: -200 }}
+                  initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.9, delay: 0.5 }}
-                  className="cursor-pointer hover:bg-gray-400 rounded-md px-2"
+                  transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                  className="cursor-pointer px-3 py-2 rounded-md
+                hover:bg-gray-200 dark:hover:bg-gray-600
+                  transition-colors"
                 >
                   My Attempted Assignments
                 </motion.li>
